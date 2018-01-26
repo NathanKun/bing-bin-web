@@ -1,0 +1,95 @@
+{
+    "title" : "Notre équipe",
+    "members" : [
+        {
+            "name" : "LACHHAB",
+            "firstname" : "Saad",
+            "job" : "Team Leader",
+            "caption" : "",
+            "facebook" : "",
+            "linkedin" : "",
+            "twitter" : ""
+        },
+        {
+            "name" : "DU",
+            "firstname" : "Tingyun",
+            "job" : "Management & Design",
+            "caption" : "",
+            "facebook" : "",
+            "linkedin" : "",
+            "twitter" : ""
+        },
+        {
+            "name" : "YU",
+            "firstname" : "Bokai",
+            "job" : "Machine Learning",
+            "caption" : "",
+            "facebook" : "",
+            "linkedin" : "",
+            "twitter" : ""
+        },
+        {
+            "name" : "HE",
+            "firstname" : "Junyang",
+            "job" : "Embarked system & App development",
+            "caption" : "",
+            "facebook" : "",
+            "linkedin" : "",
+            "twitter" : ""
+        },
+        {
+            "name" : "SONG",
+            "firstname" : "Yuzhou/Adele",
+            "job" : "Embardek System",
+            "caption" : "",
+            "facebook" : "",
+            "linkedin" : "",
+            "twitter" : ""
+        },
+        {
+            "name" : "DHERSIN",
+            "firstname" : "Arthur",
+            "job" : "Database & Web Site",
+            "caption" : "",
+            "facebook" : "",
+            "linkedin" : "",
+            "twitter" : ""
+        },
+        {
+            "name" : "ANGELLOTTI",
+            "firstname" : "Margot",
+            "job" : "Marketing",
+            "caption" : "",
+            "facebook" : "",
+            "linkedin" : "",
+            "twitter" : ""
+        },
+        {
+            "name" : "QUENTIN",
+            "firstname" : "Pierson",
+            "job" : "Marketing",
+            "caption" : "",
+            "facebook" : "",
+            "linkedin" : "",
+            "twitter" : ""
+        },
+        {
+            "name" : "Hugo",
+            "firstname" : "GILBERT",
+            "job" : "Marketing",
+            "caption" : "",
+            "facebook" : "",
+            "linkedin" : "",
+            "twitter" : ""
+        },
+        {
+            "name" : "GOMIS",
+            "firstname" : "Jean Sibiry",
+            "job" : "Marketing",
+            "caption" : "",
+            "facebook" : "",
+            "linkedin" : "",
+            "twitter" : ""
+        }
+    ]
+}

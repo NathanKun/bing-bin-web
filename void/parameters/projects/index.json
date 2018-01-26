@@ -1,0 +1,50 @@
+[
+    {
+        "codename" : "contact",
+        "logo" : "",
+        "url" : "",
+        "descrip" : "Application Android gérant un carnet de contact spécifique (pour des associations etc...)"
+    },
+    {
+        "codename" : "vtterrants",
+        "logo" : "vtterrants.jpg",
+        "url" : "http://vtterrants-corbie.sytes.net",
+        "descrip" : "Site club sportif VTTErrants"
+    },
+    {
+        "codename" : "lotoassistor",
+        "logo" : "loto.jpg",
+        "url" : "assets/appli/lotoAssistor.zip",
+        "descrip" : "Assitant virtuel pour Loto"
+    },
+    {
+        "codename" : "tubesca",
+        "logo" : "tubesca.jpg",
+        "url" : "http://idril.sytes.net/tubesca/Code",
+        "descrip" : "Application logistique Tubesca"
+    },
+    {
+        "codename" : "client",
+        "logo" : "",
+        "url" : "assets/appli/client.apk",
+        "descrip" : "Application Android pour gérer une clientèle, avec chiffre d'affaire et historique"
+    },
+    {
+        "codename" : "netmask",
+        "logo" : "",
+        "url" : "assets/appli/netmask.zip",
+        "descrip" : "Netmask : re création de l'application du même nom pour calculer les masques de sous-réseau"
+    },
+    {
+        "codename" : "emath",
+        "logo" : "",
+        "url" : "assets/appli/E_Math.zip",
+        "descrip" : "E-Math : Application éducative pour apprendre les tables de multiplications"
+    },
+    {
+        "codename" : "allumette",
+        "logo" : "",
+        "url" : "assets/appli/allumette.exe",
+        "descrip" : "Application console pour jouer au jeu des allumettes, seul ou à 2 joueurs"
+    }
+]

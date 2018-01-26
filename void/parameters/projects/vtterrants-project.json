@@ -1,0 +1,30 @@
+{
+    "title" : "Description de projet : VTTErrants",
+    "logo" : "vtterrants.jpg",
+    "url" : "http://vtterrants-corbie.sytes.net",
+    "sections" : {
+        "intro" : {
+            "title" : "Description du Projet",
+            "paragraphes" : ["Ce projet a vu le jour suite au besoin suivant : pouvoir s'inscrire en ligne pour une manifestation sportive organisé par le club de vtt VTTErrants, localisé à Corbie.",
+            "Rapidement, ce projet a eu pour objectif de créer le site officiel du club. Un site était déjà existant, mais trop lourd, peu performant et pas au gout des membres du club.",
+            "Je me suis donc lancé sur ce projet par plaisir avec pour objectif de faire un site vivant, et comme raison, rendre service."]
+        },
+        "besoins" : {
+            "title" : "Les besoins du club",
+            "paragraphes" : ["La principale fonctionnalité voulu est l'inscription en ligne, afin d'avoir un aperçu des participants pour les manifestations sportives que le club souhaite organiser. A cela s'ajoute bien sur d'autre souhaits :"],
+            "list" : ["Améliorer la visilité du club","Meilleur visibilité des partenaires et des membres","Partage des photos","Circulation d'informations"],
+            "paragraphes_" : ["Plusieurs onglets ont découlé de ces besoins : Manifestation, Partenaires, Membres, Photos etc... Sans oublier les incontournables pages de contact et d'accueil. Un espace privée pouor les membres et également en projet."]
+        },
+        "realisation" : {
+            "title" : "Déroulement de la réalisation",
+            "paragraphes" : [
+                "Dans un premier temps sur ce projet, j'avais décide de tout faire par moi-même sans utiliser aucun outil externe. Cela, afin d'apprendre par moi-même pourquoi ces outils existaient, et en comprendre le fonctionnement. Par la suite, lors d'une refonte du site, j'ai utilise un framework web (CodeIgniter) afin d'avoir une meilleur maintenabilité et avoir une plus large palette d'outils à dispositions",
+                "Le site actuel en est à sa seconde version, et tends à devenir le site officiel du club."
+            ]
+        },
+        "conclusion" : {
+            "title" : "Actuellement",
+            "paragraphes" : ["Le site est toujours en développement. La partie visible pour les utilisateurs est fonctionnel. La partie pour les membres est actuellement en cours de réalisation."]
+        }
+    }
+}

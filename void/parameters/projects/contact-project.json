@@ -1,0 +1,26 @@
+{
+    "title" : "Description de projet : Contact",
+    "logo" : "",
+    "url" : "",
+    "sections" : {
+        "intro" : {
+            "title" : "L'idée du projet",
+            "paragraphes" : ["De plus en plus de personnes utilisent des téléphones pro-perso, mais avec un seul numéro (pas de double sim). De fait, les répertoires téléphoniques se remplissent rapidement.",
+            "Il devient ainsi difficile pour certain de trouver des contacts spécifiques parmis une tel masse. D'autant plus si l'on est membres d'assocations ou autre."]
+        },
+        "besoins" : {
+            "title" : "Quel besoin avec ce projet ?",
+            "paragraphes" : [
+                "Le but de cette application est simple : avoir un annuaire indépendant qui permette d'appeler quelqu'un rapidement.",
+                "Le but n'est pas forcément d'avoir les contacts sur son téléphone, mais uniquement de pouvoir joindre la personne."
+            ]
+        },
+        "realisation" : {
+            "title" : "Les fonctionalitées",
+            "paragraphes" : [
+                "L'application en soi est très simple : une liste déroulante avec les noms des personnes. Un simple clique dessus lance un appel.",
+                "Les contacts sont stockés dans un fichier texte au format JSON sur le téléphone. Une variante de l'application se connecte à un serveur et se met à jour automatiquement avec les données reçu."
+            ]
+        }
+    }
+}

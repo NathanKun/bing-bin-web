@@ -1,0 +1,18 @@
+{
+    "title" : "Pourquoi utiliser nos services ?",
+    "economy" : {
+        "title" : "Economie",
+        "content" : [
+            "Coût de mauvais tri : 50 000 000",
+            "Coût de non tri : 260 000 000"
+        ]
+    },
+    "sorting" : {
+        "title" : "",
+        "content" :[
+            "Dans les pays Scandinaces, il y a 7 types de déchets courants.",
+            "En France, il n'y en a que 4."
+        ]
+    },
+    "img" : ""
+}

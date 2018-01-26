@@ -1,0 +1,37 @@
+{
+    "title" : "Description de projet : Loto Assistor",
+    "logo" : "loto.jpg",
+    "url" : "assets/appli/lotoAssistor.zip",
+    "sections" : {
+        "intro" : {
+            "title" : "L'idée du projet",
+            "paragraphes" : ["L'association des parents d'élèves de Fouilloy organise régulièrement des lotos pour obtenir des fonds.",
+            "Cependant, il n'y a aucun système vraiment performant afin d'animer les lotos. C'est pour aider à cela que cette application a vu le jour."]
+        },
+        "besoins" : {
+            "title" : "Le besoin pour cet assistant",
+            "paragraphes" : [
+                "L'assocation dispose déjà de matériel afin de tirer les numéros de loto. Mais il n'y a aucun système d'affichage afin de permettre aux participants de suivre les tirages.",
+                "Cette application a pour objectif les points suivants :"
+            ],
+            "list" :[
+                "Permettre l'affichage des numéros tirés",
+                "Pouvoir animer un loto de façon autonome si aucun matériel pour effectuer le tirage est disponible"
+            ]
+        },
+        "realisation" : {
+            "title" : "Les fonctionalitées",
+            "paragraphes" : [
+                "Le LotoAssistor a donc été développer dans l'idée général d'avoir une très bonne visibilité des numéros. Afin d'indiquer qu'un numéro est tiré, on clique dessus. La couleur change, et le dernier numéro tiré est affiché dans une zone plus grande.",
+                "Il est également possible d'indiquer à l'application de tirer les numéros dans les options. Dans ce cas, c'est l'application qui 'clique' elle-même, et il n'est plus possible de le faire manuellement.",
+                "Afin de pouvoir utiliser cette application sur le plus de terminaux possibles, il est également possible de changer la taille d'affichage des numéros, et également le nombre de boules disponibles."
+            ]
+        },
+        "conclusion" : {
+            "title" : "Le mot de la fin",
+            "paragraphes" : [
+                "L'application est terminé et l'assocation l'utilise actuellement lors de l'organisation de ses loto."
+            ]
+        }
+    }
+}

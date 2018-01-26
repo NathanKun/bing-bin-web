@@ -1,0 +1,9 @@
+{
+    "main" : "Accueil",
+    "contact" : "Contact",
+    "services" : "Nos Services",
+    "app" : "Application",
+    "motivations" : "Motivations",
+    "story" : "Notre Histoire",
+    "team" : "Notre équipe"
+}
