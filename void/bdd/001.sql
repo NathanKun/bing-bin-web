@@ -4,8 +4,9 @@ create table Users(
     firstname text,
     email text,
     img_url text,
-    date_nais timestamp,
+    date_nais integer,
     eco_point integer,
+    encrypt_id text,
     constraint users_primary primary key (id)
 );
 
@@ -26,7 +27,7 @@ create table Historiques(
     id varchar(50),
     id_user varchar(50),
     id_trashe varchar(50),
-    date_of_scan timestamp,
+    date_of_scan integer,
     latitude float,
     longitude float,
     constraint historiques_primary primary key (id),
@@ -45,7 +46,7 @@ create table Coupons(
     name text,
     id_user varchar(50),
     id_type varchar(50),
-    limit_date timestamp,
+    limit_date integer,
     used tinyint(1),
     constraint coupons_primary primary key (id),
     constraint coupons_users foreign key(id_user) references Users(id),

@@ -28,3 +28,27 @@
             )); ?>
 
 <?= form_close(); ?>
+
+<?= form_open('welcome/register'); ?>
+
+<?= form_input(array(
+                            'name' => 'name',
+                            'class' => 'form-control input-small',
+                            'placeholder' => 'name'
+                        )
+                    ) ?>
+
+<?= form_input(array(
+                            'name' => 'mail',
+                            'class' => 'form-control input-small',
+                            'placeholder' => 'mail'
+                        )
+                    ) ?>
+
+<?= form_submit(array(
+                'name' => 'submit',
+                'value' => 'Test',
+                'class' => 'btn btn-primary'
+            )); ?>
+
+<?= form_close(); ?>

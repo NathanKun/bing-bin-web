@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /* My definitions */
-define('URL','http://localhost/BingBin/');
+define('URL','http://localhost/BingBinWeb/');
 define('LINK','/var/www/html/BingBin/');
 define('IMG',URL.'assets/img/');
 define('CSS',URL.'assets/css/');
