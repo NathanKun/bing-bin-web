@@ -53,3 +53,9 @@ create table Coupons(
     constraint coupons_couponstypes foreign key(id_type) references CouponsTypes(id)
 );
 
+create table Authorizations(
+    id varchar(50),
+    name text,
+    email text,
+    constraint authorizations_primary primary key(id)
+);

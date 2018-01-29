@@ -40,7 +40,7 @@ class Welcome extends MY_Controller {
 			/* SAVE IN BASE */
 			$id = null;
 			try{
-				$id = $this->_users->add(array(
+				$id = $this->_authorizations->add(array(
 					'name' => $this->input->post('name'),
 					'mail' => $this->input->post('mail'),
 				));
