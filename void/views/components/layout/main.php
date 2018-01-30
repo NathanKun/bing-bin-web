@@ -9,7 +9,7 @@
         <title>BingBin | Sort better, live better</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="<?php URL ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom fonts for this template -->
         <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

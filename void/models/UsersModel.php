@@ -46,6 +46,9 @@ class UsersModel extends CI_Model
         return $id;
     }
 
+    /*
+     * $user_id : a facebook user id for the app
+     */
     public function isRegister_FB($user_id)
     {
         $rep = $this->db->select('*')

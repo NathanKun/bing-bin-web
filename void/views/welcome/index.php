@@ -249,7 +249,7 @@
           <div class="col-lg-4 mr-auto text-center text-black">
             <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
             <p>
-              <a class="contact" href="mailto:tingyun.du@bingbin.io">tingyun.du@bingbinsort.io</a>
+              <a class="contact" href="mailto:tingyun.du@bingbin.io">contact@bingbin.io</a>
             </p>
           </div>
         </div>

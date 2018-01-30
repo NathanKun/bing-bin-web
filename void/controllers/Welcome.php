@@ -14,6 +14,7 @@ class Welcome extends MY_Controller {
 		$this->var['content']['contact'] = json_decode(file_get_contents('void/parameters/welcome-fr/contact-section.json'), true);
 		$this->var['content']['team'] = json_decode(file_get_contents('void/parameters/welcome-fr/team-section.json'), true);
 
+
 		$this->setView('welcome/index');
 		$this->layout('main','header-landpage');
 	}

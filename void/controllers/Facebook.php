@@ -9,6 +9,9 @@ class Facebook extends MY_Controller {
 
     }
 
+    /*
+     * $userToken : a facebook user token for the app
+     */
     private function verifyToken($userToken)
     {
         // URL for request
@@ -33,6 +36,9 @@ class Facebook extends MY_Controller {
         }
     }
 
+    /*
+     * $userToken : a facebook user token for the app
+     */
     public function authorizeLogin($userToken)
     {
         $graph = $this->verifyToken($userToken);
