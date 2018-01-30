@@ -6,7 +6,8 @@ create table Users(
     img_url text,
     date_nais integer,
     eco_point integer,
-    encrypt_id text,
+    fb_id text,
+    google_id text,
     constraint users_primary primary key (id)
 );
 
@@ -58,4 +59,14 @@ create table Authorizations(
     name text,
     email text,
     constraint authorizations_primary primary key(id)
+);
+
+create table BingBinTokens(
+    id varchar(50),
+    token_value text,
+    id_user varchar(50),
+    emit_date integer,
+    expire_date integer,
+    constraint bingbingtokens_primary primary key(id),
+    constraint bingbingtokens_users foreign key(id_user) references Users(id)
 );
