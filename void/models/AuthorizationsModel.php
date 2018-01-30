@@ -2,10 +2,10 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class UsersModel extends CI_Model
+class AuthorizationsModel extends CI_Model
 {
 
-    protected $table = "Users";
+    protected $table = "Authorizations";
 
     public function getAll()
     {
@@ -24,6 +24,9 @@ class UsersModel extends CI_Model
             ->result();
     }
 
+    // ***************************************
+    // Args : label|body|private|album|sondage
+    // ***************************************
     public function add($args = array())
     {
         $id = uniqid(substr($args['name'], 0, 5), true);
@@ -34,19 +37,5 @@ class UsersModel extends CI_Model
         $this->db->insert($this->table);
 
         return $id;
-    }
-
-    public function isRegister_FB($user_id)
-    {
-        return $this->db->select('*')
-            ->from($this->table)
-            ->where('fb_id', $user_id)
-            ->get()
-            ->result();
-    }
-
-    public function isRegister_Google($user_id)
-    {
-
     }
 }

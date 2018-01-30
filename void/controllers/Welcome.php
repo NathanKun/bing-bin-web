@@ -38,10 +38,19 @@ class Welcome extends MY_Controller {
 			$rep['valid'] = TRUE;
 
 			/* SAVE IN BASE */
-			$rep['errors'] = /*$this->_users->add(
-				$this->input->post('name'),
-				$this->input->post('mail')
-			);*/ 'NOTHING';
+			$id = null;
+			try{
+				$id = $this->_authorizations->add(array(
+					'name' => $this->input->post('name'),
+					'mail' => $this->input->post('mail'),
+				));
+			}
+			catch(Exception $e){
+				$rep['errors'] = 'Error during insertion';
+			}
+
+			//$rep['infos'] = $id;
+
 		}else{
 			$rep['valid'] = FALSE;
 			$rep['errors'] = validation_errors();
