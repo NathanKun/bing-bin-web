@@ -76,11 +76,11 @@ $query_builder = TRUE;
 
 $db['rasp'] = array(
 	'dsn'	=> '',
-	'hostname' => '',
-	'username' => '',
-	'password' => '',
-	'database' => '',
-	'dbdriver' => 'sqlite3',
+	'hostname' => '127.0.0.1',
+	'username' => 'bingbin',
+	'password' => 'bingdbbinmyqlproject',
+	'database' => 'bingbin',
+	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
