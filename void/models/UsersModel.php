@@ -27,4 +27,18 @@ class UsersModel extends CI_Model
 
         return $this->db->insert($this->table);
     }
+
+    public function isRegister_FB($user_id)
+    {
+        return $this->db->select('*')
+            ->from($this->table)
+            ->where('fb_id', $user_id)
+            ->get()
+            ->result();
+    }
+
+    public function isRegister_Google($user_id)
+    {
+
+    }
 }
