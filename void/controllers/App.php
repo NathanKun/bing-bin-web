@@ -9,8 +9,21 @@ class App extends MY_Controller {
 
     }
 
-    public function getEcoPoint()
+    public function getEcoPoint($userToken)
     {
+        $token_info = $this->_bingbintokens->isTokenValid($userToken);
+
+        if(!$token_info){
+            echo json_encode(array(
+                "error" => "The token is not valid"
+            ));
+            exit;
+        }
+
+        //update token information
+
+        // function process
+        /*
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('login','Login','required');
@@ -30,6 +43,10 @@ class App extends MY_Controller {
             echo json_encode(array(
                 'validate' => FALSE,
             ));
-        }
+        }*/
+        echo json_encode(array(
+            "validate" => "Token is valid",
+            'info' => "We are now able to have interfaces"
+        ));
     }
 }

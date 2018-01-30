@@ -47,9 +47,10 @@ class Facebook extends MY_Controller {
          * Verify the id
          */
         $bingbin_id = $this->_users->isRegister_FB($graph['fb_id']);
+
         if(!$bingbin_id)
         {
-            $this->_users->add(array(
+            $bingbin_id = $this->_users->add(array(
                 'facebook_id' => $graph['fb_id']
             ));
         }
@@ -57,12 +58,12 @@ class Facebook extends MY_Controller {
         /**
          * if valid, generate a BingBinToken and send it to communicate
          */
-        $token = $this->tokens->generateToken();
+        $token = generateToken();
 
         /* SAVE TOKEN ACCESS IN BASE */
         $this->_bingbintokens->save(array(
             "token" => $token,
-            "id_user" => $bingbin_id
+            "id_user" => $bingbin_id->id
         ));
 
         /* RETURN TOKEN TO TERMINAL */

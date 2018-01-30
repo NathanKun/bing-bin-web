@@ -26,10 +26,20 @@ class UsersModel extends CI_Model
 
     public function add($args = array())
     {
-        $id = uniqid(substr($args['name'], 0, 5), true);
+        $id = uniqid(time(), true);
         $this->db->set('id', $id);
-        $this->db->set('name', $args['name']);
-        $this->db->set('email', $args['mail']);
+
+        if(isset($args['name'])){
+            $this->db->set('name', $args['name']);
+        }
+
+        if(isset($args['mail'])){
+            $this->db->set('email', $args['mail']);
+        }
+
+        if(isset($args['facebook_id'])){
+            $this->db->set('fb_id', $args['facebook_id']);
+        }
 
         $this->db->insert($this->table);
 
@@ -38,11 +48,16 @@ class UsersModel extends CI_Model
 
     public function isRegister_FB($user_id)
     {
-        return $this->db->select('*')
+        $rep = $this->db->select('*')
             ->from($this->table)
             ->where('fb_id', $user_id)
             ->get()
             ->result();
+        if(isset($rep[0])){
+            return $rep[0];
+        }else{
+            return false;
+        }
     }
 
     public function isRegister_Google($user_id)

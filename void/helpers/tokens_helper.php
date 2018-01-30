@@ -11,7 +11,7 @@ function generateToken()
         $token = str_replace(".","", $token);
         $token = substr($token, 2);
 
-    return $tokens;
+    return $token;
 }
 
 ?>

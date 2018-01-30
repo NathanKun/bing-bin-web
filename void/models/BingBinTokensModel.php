@@ -24,6 +24,19 @@ class BingBinTokensModel extends CI_Model
         $this->db->set('token_value', $args['token']);
         $this->db->set('expire_date', $time + 7*24*3600);
 
-        return $this->db->insert($this->table);
+        $this->db->insert($this->table);
+    }
+
+    public function isTokenValid($token){
+        $rep = $this->db->select('*')
+            ->from($this->table)
+            ->where('token_value', $token)
+            ->get()
+            ->result();
+        if(isset($rep[0])){
+            return $rep[0];
+        }else{
+            return FALSE;
+        }
     }
 }
