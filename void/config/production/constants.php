@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /* My definitions */
 define('URL','https://bingbin.io//');
-define('LINK','/var/www/html/boku/');
+define('LINK','/home/wwwroot/bingbin.io/');
 define('IMG',URL.'assets/img/');
 define('CSS',URL.'assets/css/');
 define('JS',URL.'assets/js/');
