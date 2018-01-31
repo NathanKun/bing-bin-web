@@ -63,7 +63,7 @@ class App extends MY_Controller {
     public function loginAuthorize()
     {
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('pseudo','pseudo','required');
+        $this->form_validation->set_rules('pseudo','Pseudo','required');
         $this->form_validation->set_rules('password','Password','required');
 
         $run = $this->form_validation->run();
@@ -92,11 +92,96 @@ class App extends MY_Controller {
             exit;
         }
 
+        $token = generateToken();
+
+        try{
+            /* SAVE TOKEN ACCESS IN BASE */
+            $this->_bingbintokens->save(array(
+                "token" => $token,
+                "id_user" => $match->id
+            ));
+        }catch(Exception $e)
+        {
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => 'And Error append during token generation'
+            ));
+            exit;
+        }
+
+
         echo json_encode(array(
             "valid" => TRUE,
-            "data" => $match
+            "data" => $match,
+            "token" => $token
         ));
     }
 
+    /*
+     * Definition
+     * ==========
+     * Args (POST) : pseudo|password|name|firstname|email
+     * /////////////////////////////
+     * Way of work
+     * ===========
+     * create a new account if :
+     * - email isn't take
+     * - login isn't take
+     */
+    public function registerValidation()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('pseudo','Pseudo','required');
+        $this->form_validation->set_rules('password','Password','required');
+        $this->form_validation->set_rules('email','E-Mail','required|valid_email');
+        $this->form_validation->set_rules('firstname','FirstName','required');
+        $this->form_validation->set_rules('name','Name','required');
 
+        $run = $this->form_validation->run();
+        if(!$run){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => validation_errors()
+            ));
+            exit;
+        }
+
+        // Test there's not infos already take
+        if($this->_users->existingPseudo($this->input->post('pseudo')) ){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => 'Pseudo is already take'
+            ));
+            exit;
+        }
+        if($this->_users->existingEmail($this->input->post('email')) ){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => 'An account with this email is already existing'
+            ));
+            exit;
+        }
+
+        //return a token
+        $token = generateToken();
+        try{
+            /* SAVE TOKEN ACCESS IN BASE */
+            $this->_bingbintokens->save(array(
+                "token" => $token,
+                "id_user" => $match->id
+            ));
+        }catch(Exception $e)
+        {
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => 'And Error append during token generation'
+            ));
+            exit;
+        }
+
+        echo json_encode(array(
+            "valid" => TRUE,
+            "token" => $token
+        ));
+    }
 }

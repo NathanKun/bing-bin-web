@@ -38,6 +38,32 @@ class UsersModel extends CI_Model
         }
     }
 
+    public function existingPseudo($pesudo){
+        $rep = $this->db->select('*')
+            ->from($this->table)
+            ->where('pseudo', $pseudo)
+            ->get()
+            ->result();
+        if(isset($rep[0])){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
+    public function existingEmail($email){
+        $rep = $this->db->select('*')
+            ->from($this->table)
+            ->where('email', $email)
+            ->get()
+            ->result();
+        if(isset($rep[0])){
+            return TRUE;
+        }else{
+            return FALSE;
+        }
+    }
+
     public function add($args = array())
     {
         $id = uniqid(time(), true);
