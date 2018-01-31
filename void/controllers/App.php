@@ -162,13 +162,22 @@ class App extends MY_Controller {
             exit;
         }
 
+        //create account
+        $account_id = $this->_users->add(array(
+            "name" => $this->input->post("name"),
+            "firstname" => $this->input->post("firstname"),
+            "mail" => $this->input->post("email"),
+            "pseudo" => $this->input->post('pseudo'),
+            'password' => $this->input->post('password')
+        ));
+
         //return a token
         $token = generateToken();
         try{
             /* SAVE TOKEN ACCESS IN BASE */
             $this->_bingbintokens->save(array(
                 "token" => $token,
-                "id_user" => $match->id
+                "id_user" => $account_id
             ));
         }catch(Exception $e)
         {

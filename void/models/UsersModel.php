@@ -72,13 +72,23 @@ class UsersModel extends CI_Model
         if(isset($args['name'])){
             $this->db->set('name', $args['name']);
         }
-
         if(isset($args['mail'])){
             $this->db->set('email', $args['mail']);
         }
-
         if(isset($args['facebook_id'])){
             $this->db->set('fb_id', $args['facebook_id']);
+        }
+        if(isset($args['name'])){
+            $this->db->set('name', $args['name']);
+        }
+        if(isset($args['firstname'])){
+            $this->db->set('firstname', $args['firstname']);
+        }
+        if(isset($args['pseudo'])){
+            $this->db->set('pseudo', $args['pseudo']);
+        }
+        if(isset($args['password'])){
+            $this->db->set('password', $args['password']);
         }
 
         $this->db->insert($this->table);
