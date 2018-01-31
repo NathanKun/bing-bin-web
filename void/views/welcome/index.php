@@ -244,12 +244,12 @@
         <div class="row">
           <div class="col-lg-4 ml-auto text-center">
             <i class="fa fa-phone fa-3x mb-3 sr-contact"></i>
-            <p>+33 7 57 51 03 88</p>
+            <p>+33 7 51 57 03 88</p>
           </div>
           <div class="col-lg-4 mr-auto text-center text-black">
             <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
             <p>
-              <a class="contact" href="mailto:tingyun.du@bingbin.io">contact@bingbin.io</a>
+              <a class="contact" href="mailto:contact@bingbin.io">contact@bingbin.io</a>
             </p>
           </div>
         </div>
