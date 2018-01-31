@@ -1,7 +1,7 @@
-<?= form_open('app/getEcoPoint'); ?>
+<?= form_open('app/loginAuthorize'); ?>
 
                     <?= form_input(array(
-                            'name' => 'login',
+                            'name' => 'pseudo',
                             'class' => 'form-control input-small',
                             'placeholder' => 'Login'
                         )

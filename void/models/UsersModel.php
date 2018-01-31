@@ -24,6 +24,20 @@ class UsersModel extends CI_Model
             ->result();
     }
 
+    public function logMatchPwd($pseudo, $password){
+        $rep = $this->db->select('*')
+            ->from($this->table)
+            ->where('pseudo', $pseudo)
+            ->where('password', $password)
+            ->get()
+            ->result();
+        if(isset($rep[0])){
+            return $rep[0];
+        }else{
+            return FALSE;
+        }
+    }
+
     public function add($args = array())
     {
         $id = uniqid(time(), true);
