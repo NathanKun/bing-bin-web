@@ -256,20 +256,4 @@
       </div>
     </section>
 
-   <footer class="bg-footer">
-          <div class="container" text-white>
-            <div class="row">
-              <div class="col-sm-8 margin-20" text-white>
-                <ul class="list-inline social">
-                  <li>Connect with us on    <a href="https://www.facebook.com/bingbinsort/"><i class="fa fa-facebook"></i>    <a href="https://www.instagram.com/kumparun/"><i class="fa fa-instagram"></i></a></li>
-                </ul>
-              </div>
-              <div class="col-sm-4 text-right">
-                <p><small>Copyright &copy; Bing Bin 2018. All rights reserved.
-    	            </small></p>
-              </div>
-            </div>
-          </div>
-        </footer>
-
 <!-- end of Contact-->

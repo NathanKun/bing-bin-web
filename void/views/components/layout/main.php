@@ -48,16 +48,28 @@ echo $v;
     </body>
 
     <!-- FOOTER -->
-    <footer id="footer" class="midnight-blue footer">
-        <div class="container">
-            <div class="row">
-            <div class="col-sm-6">
-
-            </div>
-
+    <footer class="bg-footer">
+    <div class="container" text-white>
+      <div class="row">
+        <div class="col-sm-4 margin-20" text-white>
+          <ul class="list-inline social">
+            <li>Connect with us on    <a href="https://www.facebook.com/bingbinsort/"><i class="fa fa-facebook"></i>    <a href="https://www.instagram.com/kumparun/"><i class="fa fa-instagram"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-sm-4">
+            <div class="text-center">
+                <p>
+                    <small><a href="assets/privacy_policy.pdf" target="_blank">Privacy Policy</a></small>
+                </p>
             </div>
         </div>
-    </footer>
+        <div class="col-sm-4 text-right">
+          <p><small>Copyright &copy; Bing Bin 2018. All rights reserved.
+              </small></p>
+        </div>
+      </div>
+    </div>
+  </footer>
 
     <!-- Bootstrap core JavaScript -->
     <script src="assets/vendor/jquery/jquery.min.js"></script>
