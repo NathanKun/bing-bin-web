@@ -193,4 +193,45 @@ class App extends MY_Controller {
             "token" => $token
         ));
     }
+
+    /*
+     * Definition
+     * ==========
+     * Args (POST) : BingBinToken
+     * /////////////////////////////
+     * Way of work
+     * ===========
+     * return all information for a person
+     */
+    public function getMyInfo()
+    {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('BingBinToken','BingBinToken','required');
+
+        $run = $this->form_validation->run();
+        if(!$run){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Missing argument : BingBinToken"
+            ));
+            exit;
+        }
+
+        $token_info = $this->_bingbintokens->isTokenValid($this->input->post('BingBinToken'));
+
+        if(!$token_info){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "The Token is not valid"
+            ));
+            exit;
+        }
+
+        $person_info = $this->_users->get($token_info->id_user);
+
+        echo json_encode(array(
+            "valid" => TRUE,
+            "data" => $person_info[0]
+        ));
+    }
 }

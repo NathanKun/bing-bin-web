@@ -29,22 +29,14 @@
 
 <?= form_close(); ?>
 
-<?= form_open('welcome/register'); ?>
+<?= form_open('app/getmyinfo'); ?>
 
 <?= form_input(array(
-                            'name' => 'name',
+                            'name' => 'BingBinToken',
                             'class' => 'form-control input-small',
                             'placeholder' => 'name'
                         )
                     ) ?>
-
-<?= form_input(array(
-                            'name' => 'mail',
-                            'class' => 'form-control input-small',
-                            'placeholder' => 'mail'
-                        )
-                    ) ?>
-
 <?= form_submit(array(
                 'name' => 'submit',
                 'value' => 'Test',
