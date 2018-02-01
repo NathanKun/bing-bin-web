@@ -208,6 +208,7 @@ class App extends MY_Controller {
         $this->load->library('form_validation');
         $this->form_validation->set_rules('BingBinToken','BingBinToken','required');
 
+        // check data
         $run = $this->form_validation->run();
         if(!$run){
             echo json_encode(array(
@@ -217,8 +218,8 @@ class App extends MY_Controller {
             exit;
         }
 
+        // check if token existing
         $token_info = $this->_bingbintokens->isTokenValid($this->input->post('BingBinToken'));
-
         if(!$token_info){
             echo json_encode(array(
                 "valid" => FALSE,
@@ -227,11 +228,77 @@ class App extends MY_Controller {
             exit;
         }
 
+        //return information
         $person_info = $this->_users->get($token_info->id_user);
 
         echo json_encode(array(
             "valid" => TRUE,
             "data" => $person_info[0]
+        ));
+    }
+
+    public function getRank()
+    {
+        $this->load->library('form_validation');
+
+        // check argument
+        $this->form_validation->set_rules('BingBinToken', 'BingBinToken', 'required');
+        $run = $this->form_validation->run();
+        if(!$run){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Argument Missing"
+            ));
+            exit;
+        }
+
+        // get person
+        $token_info = $this->_bingbintokens->isTokenValid($vaa);
+        if(!$token_info){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Token is not valid"
+            ));
+            exit;
+        }
+        $person = $this->_users->get($token_info->id_user)[0];
+        if(!$person){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "No user was found"
+            ));
+            exit;
+        }
+
+        // process for get rank
+        $ranks = $this->_users->rank();
+        $compteur = 0;
+        $i = 0;
+        $found = false;
+        foreach($ranks as $v){
+            if($compteur >=1 && $v->eco_point == $ranks[$compteur + $i -1]->eco_point){
+                $i++;
+            }else{
+                $compteur++;
+                $compteur += $i;
+                $i = 0;
+            }
+            if($v->id == $person->id){
+                $found = true;
+                break;
+            }
+        }
+        /*
+        while($ranks[0]->id != $person->id){
+            $compteur++;
+        }*/
+        // if noone was found, no rank
+        if(!$found){
+            $compteur = 0;
+        }
+        echo json_encode(array(
+            'valid' => TRUE,
+            'rank' => $compteur
         ));
     }
 }

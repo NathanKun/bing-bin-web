@@ -24,6 +24,16 @@ class UsersModel extends CI_Model
             ->result();
     }
 
+    public function rank()
+    {
+        $query = $this->db->select('*')
+            ->from($this->table)
+            ->order_by('eco_point','DESC')
+            ->get()
+            ->result();
+        return $query;
+    }
+
     public function logMatchPwd($pseudo, $password){
         $rep = $this->db->select('*')
             ->from($this->table)
