@@ -68,7 +68,7 @@ class UsersModel extends CI_Model
             ->get()
             ->result();
         if(isset($rep[0])){
-            return TRUE;
+            return $rep[0];
         }else{
             return FALSE;
         }
