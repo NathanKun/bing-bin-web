@@ -9,47 +9,6 @@ class App extends MY_Controller {
 
     }
 
-    public function getEcoPoint($userToken)
-    {
-        $token_info = $this->_bingbintokens->isTokenValid($userToken);
-
-        if(!$token_info){
-            echo json_encode(array(
-                "error" => "The token is not valid"
-            ));
-            exit;
-        }
-
-        //update token information
-
-        // function process
-        /*
-        $this->load->library('form_validation');
-
-        $this->form_validation->set_rules('login','Login','required');
-        $this->form_validation->set_rules('password','Password','required');
-        $this->form_validation->set_rules('field','field','required');
-
-        $validate = $this->form_validation->run();
-
-        if($validate === TRUE)
-        {
-            echo json_encode(array(
-                'validate' => TRUE,
-                'field_value' => $this->input->post('field')
-            ));
-        }
-        else{
-            echo json_encode(array(
-                'validate' => FALSE,
-            ));
-        }*/
-        echo json_encode(array(
-            "validate" => "Token is valid",
-            'info' => "We are now able to have interfaces"
-        ));
-    }
-
     /*
      * Definition
      * ==========
@@ -81,7 +40,7 @@ class App extends MY_Controller {
 
         $match = $this->_users->logMatchPwd(
             $this->input->post('pseudo'),
-            $this->input->post('password')
+            sha1($this->input->post('password'))
         );
 
         if(!$match){
@@ -92,28 +51,10 @@ class App extends MY_Controller {
             exit;
         }
 
-        $token = generateToken();
-
-        try{
-            /* SAVE TOKEN ACCESS IN BASE */
-            $this->_bingbintokens->save(array(
-                "token" => $token,
-                "id_user" => $match->id
-            ));
-        }catch(Exception $e)
-        {
-            echo json_encode(array(
-                "valid" => FALSE,
-                "error" => 'And Error append during token generation'
-            ));
-            exit;
-        }
-
-
         echo json_encode(array(
             "valid" => TRUE,
             "data" => $match,
-            "token" => $token
+            "token" => $this->updateToken($match->id)
         ));
     }
 
@@ -168,29 +109,12 @@ class App extends MY_Controller {
             "firstname" => $this->input->post("firstname"),
             "mail" => $this->input->post("email"),
             "pseudo" => $this->input->post('pseudo'),
-            'password' => $this->input->post('password')
+            'password' => sha1($this->input->post('password'))
         ));
-
-        //return a token
-        $token = generateToken();
-        try{
-            /* SAVE TOKEN ACCESS IN BASE */
-            $this->_bingbintokens->save(array(
-                "token" => $token,
-                "id_user" => $account_id
-            ));
-        }catch(Exception $e)
-        {
-            echo json_encode(array(
-                "valid" => FALSE,
-                "error" => 'And Error append during token generation'
-            ));
-            exit;
-        }
 
         echo json_encode(array(
             "valid" => TRUE,
-            "token" => $token
+            "token" => $this->updateToken($account_id)
         ));
     }
 
@@ -219,7 +143,7 @@ class App extends MY_Controller {
         }
 
         // check if token existing
-        $token_info = $this->_bingbintokens->isTokenValid($this->input->post('BingBinToken'));
+        $token_info = $this->checkToken($this->input->post('BingBinToken'));
         if(!$token_info){
             echo json_encode(array(
                 "valid" => FALSE,
@@ -229,11 +153,21 @@ class App extends MY_Controller {
         }
 
         //return information
-        $person_info = $this->_users->get($token_info->id_user);
+        $person_info = $this->_users->get($token_info->id_user)[0];
 
         echo json_encode(array(
             "valid" => TRUE,
-            "data" => $person_info[0]
+            "data" => array(
+                "name" => $person_info->name,
+                "firstname" => $person_info->firstname,
+                "email" => $person_info->email,
+                "img_url" => $person_info->img_url,
+                "date_nais" => $person_info->date_nais,
+                "fb_id" => $person_info->fb_id,
+                "pseudo" => $person_info->pseudo,
+                "eco_point" => $person_info->eco_point,
+                "rank" => $this->computeRank($person_info->id)),
+            "token" => $this->updateToken($person_info->id)
         ));
     }
 
@@ -253,7 +187,7 @@ class App extends MY_Controller {
         }
 
         // get person
-        $token_info = $this->_bingbintokens->isTokenValid($vaa);
+        $token_info = $this->checkToken($this->input->post('BingBinToken'));
         if(!$token_info){
             echo json_encode(array(
                 "valid" => FALSE,
@@ -270,6 +204,17 @@ class App extends MY_Controller {
             exit;
         }
 
+        $compteur = $this->computeRank($person->id);
+
+        echo json_encode(array(
+            'valid' => TRUE,
+            'rank' => $compteur,
+            'token' => $this->updateToken($person->id)
+        ));
+    }
+
+    private function computeRank($person_id)
+    {
         // process for get rank
         $ranks = $this->_users->rank();
         $compteur = 0;
@@ -283,7 +228,7 @@ class App extends MY_Controller {
                 $compteur += $i;
                 $i = 0;
             }
-            if($v->id == $person->id){
+            if($v->id == $person_id){
                 $found = true;
                 break;
             }
@@ -296,9 +241,7 @@ class App extends MY_Controller {
         if(!$found){
             $compteur = 0;
         }
-        echo json_encode(array(
-            'valid' => TRUE,
-            'rank' => $compteur
-        ));
+
+        return $compteur;
     }
 }

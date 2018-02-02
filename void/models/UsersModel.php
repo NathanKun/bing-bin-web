@@ -48,7 +48,7 @@ class UsersModel extends CI_Model
         }
     }
 
-    public function existingPseudo($pesudo){
+    public function existingPseudo($pseudo){
         $rep = $this->db->select('*')
             ->from($this->table)
             ->where('pseudo', $pseudo)
@@ -99,6 +99,9 @@ class UsersModel extends CI_Model
         }
         if(isset($args['password'])){
             $this->db->set('password', $args['password']);
+        }
+        if(isset($args['img_url'])){
+            $this->db->set('img_url', $args['img_url']);
         }
 
         $this->db->insert($this->table);

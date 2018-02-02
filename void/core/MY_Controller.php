@@ -47,25 +47,46 @@ class MY_Controller extends CI_Controller {
 		$this->load->view('components/layout/'.$layout, $this->var);
 	}
 
-	protected function WIP()
+	protected function checkToken($token)
 	{
-		$this->setView('wip');
-		$this->layout();
-	}
+		$token_info = $this->_bingbintokens->isTokenValid($token);
 
-	protected function member()
-	{
-		if($this->session->userdata('member') == null)
-		{
-			redirect('welcome','refresh');
+		if(!$token_info){
+			return FALSE;
 		}
+
+		$current_time = time();
+		if($current_time >= $token_info->expire_date){
+			return FALSE;
+		}
+
+		return $token_info;
 	}
 
-	protected function admin()
+	protected function updateToken($bingbin_id)
 	{
-		if($this->session->userdata('member') != null && !$this->session->userdata('member')->admin)
-		{
-			redirect('welcome','refresh');
+		// check if no other token is running
+		$tokens = $this->_bingbintokens->getTokensFor($bingbin_id);
+		$tokensRunning = array();
+		$currentTime = time();
+
+		foreach($tokens as $t){
+			if($t->expire_date > $currentTime){
+				$this->_bingbintokens->setExpireToken($t->id);
+			}
+		}
+
+		$token = generateToken();
+
+		/* SAVE TOKEN ACCESS IN BASE */
+		try{
+			$this->_bingbintokens->save(array(
+				"token" => $token,
+				"id_user" => $bingbin_id
+			));
+			return $token;
+		}catch(Exception $e){
+			return FALSE;
 		}
 	}
 }

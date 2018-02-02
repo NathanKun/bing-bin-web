@@ -71,21 +71,10 @@ class Google extends MY_Controller {
             $bingbin_id = $this->_users->get($bingbin_id)[0];
         }
 
-        /**
-         * if valid, generate a BingBinToken and send it to communicate
-         */
-        $token = generateToken();
-        var_dump($bingbin_id);
-
-        /* SAVE TOKEN ACCESS IN BASE */
-        $this->_bingbintokens->save(array(
-            "token" => $token,
-            "id_user" => $bingbin_id->id
-        ));
 
         /* RETURN TOKEN TO TERMINAL */
         echo json_encode(array(
-            "token" => $token
+            "token" => $this->updateToken($bingbin_id->id)
         ));
     }
 }

@@ -61,20 +61,9 @@ class Facebook extends MY_Controller {
             ));
         }
 
-        /**
-         * if valid, generate a BingBinToken and send it to communicate
-         */
-        $token = generateToken();
-
-        /* SAVE TOKEN ACCESS IN BASE */
-        $this->_bingbintokens->save(array(
-            "token" => $token,
-            "id_user" => $bingbin_id->id
-        ));
-
         /* RETURN TOKEN TO TERMINAL */
         echo json_encode(array(
-            "token" => $token
+            "token" => $this->updateToken($bingbin_id)
         ));
     }
 }
