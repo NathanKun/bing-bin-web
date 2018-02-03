@@ -51,6 +51,8 @@ class App extends MY_Controller {
             exit;
         }
 
+        $this->invalidOldTokens($match->id);
+
         echo json_encode(array(
             "valid" => TRUE,
             "data" => $match,
@@ -166,8 +168,7 @@ class App extends MY_Controller {
                 "fb_id" => $person_info->fb_id,
                 "pseudo" => $person_info->pseudo,
                 "eco_point" => $person_info->eco_point,
-                "rank" => $this->computeRank($person_info->id)),
-            "token" => $this->updateToken($person_info->id)
+                "rank" => $this->computeRank($person_info->id))
         ));
     }
 
@@ -208,8 +209,7 @@ class App extends MY_Controller {
 
         echo json_encode(array(
             'valid' => TRUE,
-            'rank' => $compteur,
-            'token' => $this->updateToken($person->id)
+            'rank' => $compteur
         ));
     }
 

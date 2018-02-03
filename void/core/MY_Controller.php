@@ -63,30 +63,26 @@ class MY_Controller extends CI_Controller {
 		return $token_info;
 	}
 
-	protected function updateToken($bingbin_id)
+	protected function invalidOldTokens($bingbin_id)
 	{
 		// check if no other token is running
-		$tokens = $this->_bingbintokens->getTokensFor($bingbin_id);
-		$tokensRunning = array();
-		$currentTime = time();
+		$this->_bingbintokens->invalidToken($bingbin_id);
+	}
 
-		foreach($tokens as $t){
-			if($t->expire_date > $currentTime){
-				$this->_bingbintokens->setExpireToken($t->id);
-			}
-		}
-
+	protected function updateToken($bingbin_id)
+	{
 		$token = generateToken();
 
 		/* SAVE TOKEN ACCESS IN BASE */
-		try{
-			$this->_bingbintokens->save(array(
+			$res = $this->_bingbintokens->save(array(
 				"token" => $token,
 				"id_user" => $bingbin_id
 			));
+
+		if($res){
 			return $token;
-		}catch(Exception $e){
-			return FALSE;
+		}else{
+			return false;
 		}
 	}
 }

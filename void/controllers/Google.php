@@ -71,6 +71,7 @@ class Google extends MY_Controller {
             $bingbin_id = $this->_users->get($bingbin_id)[0];
         }
 
+        $this->invalidOldTokens($bingbin_id->id);
 
         /* RETURN TOKEN TO TERMINAL */
         echo json_encode(array(
