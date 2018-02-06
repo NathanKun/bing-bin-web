@@ -135,5 +135,8 @@ $autoload['language'] = array();
 $autoload['model'] = array(
     'UsersModel' => '_users',
     'AuthorizationsModel' => '_authorizations',
-    'BingBinTokensModel' => '_bingbintokens'
+    'BingBinTokensModel' => '_bingbintokens',
+    'TrashesCategoriesModel' => '_trashescategories',
+    'TrashesModel' => '_trashes',
+    'HistoriquesModel' => '_historiques'
 );

@@ -109,6 +109,14 @@ class UsersModel extends CI_Model
         return $id;
     }
 
+    public function setEcoPoint($id, $value)
+    {
+        $this->db->set('eco_point', $value);
+        $this->db->where('id',$id);
+
+        $this->db->update($this->table);
+    }
+
     /*
      * $user_id : a facebook user id for the app
      */

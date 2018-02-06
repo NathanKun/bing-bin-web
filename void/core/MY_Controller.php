@@ -46,7 +46,16 @@ class MY_Controller extends CI_Controller {
 
 		$this->load->view('components/layout/'.$layout, $this->var);
 	}
-
+	/*
+     * Definition
+     * ==========
+     * Args :
+     * - BingBinToken
+     * /////////////////////////////
+     * Way of work
+     * ===========
+     * return token's info if valid, false else
+     */
 	protected function checkToken($token)
 	{
 		$token_info = $this->_bingbintokens->isTokenValid($token);
@@ -60,15 +69,35 @@ class MY_Controller extends CI_Controller {
 			return FALSE;
 		}
 
-		return $token_info;
+		return $token_info; //return token's info
 	}
 
+	/*
+     * Definition
+     * ==========
+     * Args :
+     * - bingbin_id
+     * /////////////////////////////
+     * Way of work
+     * ===========
+     * invalid all token for the user
+     */
 	protected function invalidOldTokens($bingbin_id)
 	{
 		// check if no other token is running
 		$this->_bingbintokens->invalidToken($bingbin_id);
 	}
 
+	/*
+     * Definition
+     * ==========
+     * Args :
+     * - bingbin_id
+     * /////////////////////////////
+     * Way of work
+     * ===========
+     * create a token and return it for a user, or false if errors
+     */
 	protected function updateToken($bingbin_id)
 	{
 		$token = generateToken();

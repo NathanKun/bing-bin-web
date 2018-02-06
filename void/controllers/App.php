@@ -172,6 +172,15 @@ class App extends MY_Controller {
         ));
     }
 
+    /*
+     * Definition
+     * ==========
+     * Args (POST) : BingBinToken
+     * /////////////////////////////
+     * Way of work
+     * ===========
+     * return the rank of the person
+     */
     public function getRank()
     {
         $this->load->library('form_validation');
@@ -243,5 +252,130 @@ class App extends MY_Controller {
         }
 
         return $compteur;
+    }
+
+    /*
+     * Definition
+     * ==========
+     * Args (POST) :
+     * - BingBinToken
+     * - trashName
+     * - trashCategory
+     * FILE : trashPicture
+     * /////////////////////////////
+     * Way of work
+     * ===========
+     * return all information for a person
+     */
+    public function uploadScan()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('BingBinToken','BingBinToken','required');
+        $this->form_validation->set_rules('trashName','TrashName','required');
+        $this->form_validation->set_rules('trashCategory','trashCategory','required');
+
+        $run = $this->form_validation->run();
+        if(!$run){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Argument Missing"
+            ));
+            exit;
+        }
+
+        $token_info = $this->checkToken($this->input->post('BingBinToken'));
+        if(!$token_info){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Invalid token"
+            ));
+            exit;
+        }
+
+        $type_info = $this->_trashescategories->get($this->input->post('trashCategory'))[0];
+
+        // process for eco_point
+        if(!$this->addEcoPoint($token_info->id_user, $type_info->id)){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "An error happend during saving eco_point"
+            ));
+            exit;
+        }
+
+        //process for img register
+    }
+
+    public function testImg()
+    {/*
+        $_FILES['icone']['name']     //Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
+        $_FILES['icone']['type']     //Le type du fichier. Par exemple, cela peut être « image/png ».
+        $_FILES['icone']['size']     //La taille du fichier en octets.
+        $_FILES['icone']['tmp_name'] //L'adresse vers le fichier uploadé dans le répertoire temporaire.
+        $_FILES['icone']['error']*/
+
+        if ($_FILES['img']['error'] > 0){
+            echo json_encode(array(
+                'valid' => FALSE,
+                'error' => 'Error during the transfert'
+            ));
+            exit;
+        }
+        $name = md5(uniqid(rand(), true));
+        $name .= '.'.substr(mime_content_type($_FILES['img']['tmp_name']), strpos(mime_content_type($_FILES['img']['tmp_name']), '/')+1);
+
+
+        $resultat = move_uploaded_file($_FILES['img']['tmp_name'],'assets/img/scanResult/'.$name);
+        if (!$resultat){
+            echo json_encode(array(
+                'valid' => TRUE,
+                'url' => 'Error during saving the photo'
+            ));
+            exit;
+        }
+    }
+
+    private function savePicture($bingbin_id, $picture_name)
+    {
+
+    }
+
+    private function addEcoPoint($bingbin_id, $type_id)
+    {
+        var_dump($bingbin_id);
+        $person = $this->_users->get($bingbin_id)[0];
+        $type = $this->_trashescategories->get($type_id)[0];
+        var_dump($person);
+        var_dump($type);
+        return $this->_users->setEcoPoint($person->id, $person->eco_point + $type->eco_point);
+    }
+
+    /*
+     * Definition
+     * ==========
+     * Args (POST) :
+     * - BingBinToken
+     * /////////////////////////////
+     * Way of work
+     * ===========
+     * return info for trashesCategories
+     */
+    public function getTrashesCategories()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('BingBinToken','BingBinToken','required');
+
+        $run = $this->form_validation->run();
+        if(!$run){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Argument Missing"
+            ));
+            exit;
+        }
+
+        echo json_encode($this->_trashescategories->getAll());
     }
 }
