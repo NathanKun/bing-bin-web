@@ -61,6 +61,45 @@
 
 <?= form_close(); ?>
 
+<?= form_open('app/uploadScan'); ?>
+
+<?= form_input(array(
+                            'name' => 'BingBinToken',
+                            'class' => 'form-control input-small',
+                            'placeholder' => 'get rank'
+                        )
+                    ) ?>
+                    <?= form_input(array(
+                            'name' => 'trashName',
+                            'class' => 'form-control input-small',
+                            'placeholder' => 'get rank'
+                        )
+                    ) ?>
+                    <?= form_input(array(
+                            'name' => 'trashCategory',
+                            'class' => 'form-control input-small',
+                            'placeholder' => 'get rank'
+                        )
+                    ) ?>
+<?= form_submit(array(
+                'name' => 'submit',
+                'value' => 'Test',
+                'class' => 'btn btn-primary'
+            )); ?>
+
+<?= form_close(); ?>
+
+<form method="post" action="<?= site_url('app/testImg'); ?>" enctype="multipart/form-data">
+
+<input type="file" name="img"/>
+<?= form_submit(array(
+                'name' => 'submit',
+                'value' => 'Test',
+                'class' => 'btn btn-primary'
+            )); ?>
+
+<?= form_close(); ?>
+
 <?= form_open('app/registerValidation'); ?>
 
 <?= form_input(array(
