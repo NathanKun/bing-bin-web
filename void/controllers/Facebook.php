@@ -63,7 +63,7 @@ class Facebook extends MY_Controller {
         // if not valide
         if(!$graph['valid']){
             echo json_encode(array(
-                "error" => "User Token is not valid"
+                "error" => "User Token is not valid or a problem has happening with the cummincation with Facebook server"
             ));
             exit;
         }
@@ -81,7 +81,7 @@ class Facebook extends MY_Controller {
                 ));
                 exit;
             }
-            var_dump($fb_info);
+
             $bingbin_id = $this->_users->add(array(
                 'facebook_id' => $graph['fb_id'],
                 'name' => $fb_info->last_name,
@@ -92,7 +92,7 @@ class Facebook extends MY_Controller {
         }else{
             $bingbin_id = $bingbin_id->id;
         }
-        var_dump($bingbin_id);
+
         $this->invalidOldTokens($bingbin_id);
 
         /* RETURN TOKEN TO TERMINAL */

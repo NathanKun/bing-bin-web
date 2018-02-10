@@ -38,4 +38,14 @@ class HistoriquesModel extends CI_Model
             return FALSE;
         }
     }
+
+    public function inDuration($duration)
+    {
+        return $this->db->select('*')
+        ->from($this->table)
+        ->where('date_of_scan >=', $duration)
+        ->order_by('date_of_scan','DESC')
+        ->get()
+        ->result();
+    }
 }

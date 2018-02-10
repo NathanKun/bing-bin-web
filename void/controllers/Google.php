@@ -51,7 +51,7 @@ class Google extends MY_Controller {
         // if not valide
         if(!$graph['valid']){
             echo json_encode(array(
-                "error" => "User Token is not valid"
+                "error" => "User Token is not valid or a problem has happening with the cummincation with Google server"
             ));
             exit;
         }

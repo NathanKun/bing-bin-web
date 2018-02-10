@@ -45,7 +45,29 @@
 
 <?= form_close(); ?>
 
-<?= form_open('app/getrank'); ?>
+<?= form_open('ranking/getladder'); ?>
+
+<?= form_input(array(
+                            'name' => 'BingBinToken',
+                            'class' => 'form-control input-small',
+                            'placeholder' => 'name'
+                        )
+                    ) ?>
+                    <?= form_input(array(
+                            'name' => 'Duration',
+                            'class' => 'form-control input-small',
+                            'placeholder' => 'Duration'
+                        )
+                    ) ?>
+<?= form_submit(array(
+                'name' => 'submit',
+                'value' => 'Test',
+                'class' => 'btn btn-primary'
+            )); ?>
+
+<?= form_close(); ?>
+
+<?= form_open('rangink/getrank'); ?>
 
 <?= form_input(array(
                             'name' => 'BingBinToken',
