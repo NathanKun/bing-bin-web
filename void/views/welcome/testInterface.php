@@ -67,12 +67,12 @@
 
 <?= form_close(); ?>
 
-<?= form_open('rangink/getrank'); ?>
+<?= form_open('app/getTrashesCategories'); ?>
 
 <?= form_input(array(
                             'name' => 'BingBinToken',
                             'class' => 'form-control input-small',
-                            'placeholder' => 'get rank'
+                            'placeholder' => 'get categories'
                         )
                     ) ?>
 <?= form_submit(array(
@@ -83,8 +83,9 @@
 
 <?= form_close(); ?>
 
-<?= form_open('app/uploadScan'); ?>
 
+
+<form method="post" action="<?= site_url('app/uploadscan'); ?>" enctype="multipart/form-data">
 <?= form_input(array(
                             'name' => 'BingBinToken',
                             'class' => 'form-control input-small',
@@ -103,15 +104,6 @@
                             'placeholder' => 'get rank'
                         )
                     ) ?>
-<?= form_submit(array(
-                'name' => 'submit',
-                'value' => 'Test',
-                'class' => 'btn btn-primary'
-            )); ?>
-
-<?= form_close(); ?>
-
-<form method="post" action="<?= site_url('app/testImg'); ?>" enctype="multipart/form-data">
 
 <input type="file" name="img"/>
 <?= form_submit(array(
@@ -121,6 +113,8 @@
             )); ?>
 
 <?= form_close(); ?>
+
+
 
 <?= form_open('app/registerValidation'); ?>
 

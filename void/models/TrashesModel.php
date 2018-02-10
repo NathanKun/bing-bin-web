@@ -30,7 +30,8 @@ class TrashesModel extends CI_Model
 
         $this->db->set('id', $id);
         $this->db->set('name', $args['trashName']);
-        $this->db->sert('img_url', $args['img_url']);
+        $this->db->set('id_type', $args['id_type']);
+        $this->db->set('img_url', $args['img_url']);
 
         if($this->db->insert($this->table)){
             return $id;

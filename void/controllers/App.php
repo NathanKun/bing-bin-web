@@ -3,12 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class App extends MY_Controller {
 
-
-	public function index()
-	{
-
-    }
-
     /*
      * Definition
      * ==========
@@ -30,10 +24,7 @@ class App extends MY_Controller {
         if(!$run){
             echo json_encode(array(
                 "valid" => FALSE,
-                "error" => array(
-                    "pseudo" => form_error('pseudo'),
-                    'password' => form_error('password')
-                )
+                "error" => 'Argument missing'
             ));
             exit;
         }
@@ -42,6 +33,8 @@ class App extends MY_Controller {
             $this->input->post('pseudo'),
             sha1($this->input->post('password'))
         );
+
+        unset($match->password);
 
         if(!$match){
             echo json_encode(array(
@@ -155,20 +148,7 @@ class App extends MY_Controller {
         }
 
         //return information
-        $person_info = $this->_users->get($token_info->id_user)[0];
-
-        echo json_encode(array(
-            "valid" => TRUE,
-            "data" => array(
-                "name" => $person_info->name,
-                "firstname" => $person_info->firstname,
-                "email" => $person_info->email,
-                "img_url" => $person_info->img_url,
-                "date_nais" => $person_info->date_nais,
-                "fb_id" => $person_info->fb_id,
-                "pseudo" => $person_info->pseudo,
-                "eco_point" => $person_info->eco_point
-        ));
+        echo json_encode($this->infoFor($token_info->id_user));
     }
 
     /*
@@ -210,8 +190,40 @@ class App extends MY_Controller {
             exit;
         }
 
-        $type_info = $this->_trashescategories->get($this->input->post('trashCategory'))[0];
+        $type_info = $this->_trashescategories->get($this->input->post('trashCategory'));
+        if($type_info == NULL){
+            echo json_encode(array(
+                'valid' => FALSE,
+                'error' => 'Type of trash isn\'t valid'
+            ));
+            exit;
+        }
+        $type_info = $type_info[0];
+        $img_name = $this->savePhoto($token_info->id_user, 'img');
 
+        $id_trash = $this->_trashes->save(array(
+            'trashName' => $this->input->post('trashName'),
+            'id_type' => $this->input->post('trashCategory'),
+            'img_url' => $img_name
+        ));
+        if(!$id_trash){
+            echo json_encode(array(
+                'valid' => FALSE,
+                'error' => 'Error during saving the trash'
+            ));
+            exit;
+        }
+        $id_historique = $this->_historiques->save(array(
+            'id_trash' => $id_trash,
+            'id_user' => $token_info->id_user
+        ));
+        if(!$id_historique){
+            echo json_encode(array(
+                'valid' => FALSE,
+                'error' => 'Error during saving the trash'
+            ));
+            exit;
+        }
         // process for eco_point
         if(!$this->addEcoPoint($token_info->id_user, $type_info->id)){
             echo json_encode(array(
@@ -221,51 +233,7 @@ class App extends MY_Controller {
             exit;
         }
 
-        //process for img register
-    }
-
-    public function testImg()
-    {/*
-        $_FILES['icone']['name']     //Le nom original du fichier, comme sur le disque du visiteur (exemple : mon_icone.png).
-        $_FILES['icone']['type']     //Le type du fichier. Par exemple, cela peut être « image/png ».
-        $_FILES['icone']['size']     //La taille du fichier en octets.
-        $_FILES['icone']['tmp_name'] //L'adresse vers le fichier uploadé dans le répertoire temporaire.
-        $_FILES['icone']['error']*/
-
-        if ($_FILES['img']['error'] > 0){
-            echo json_encode(array(
-                'valid' => FALSE,
-                'error' => 'Error during the transfert'
-            ));
-            exit;
-        }
-        $name = md5(uniqid(rand(), true));
-        $name .= '.'.substr(mime_content_type($_FILES['img']['tmp_name']), strpos(mime_content_type($_FILES['img']['tmp_name']), '/')+1);
-
-
-        $resultat = move_uploaded_file($_FILES['img']['tmp_name'],'assets/img/scanResult/'.$name);
-        if (!$resultat){
-            echo json_encode(array(
-                'valid' => TRUE,
-                'url' => 'Error during saving the photo'
-            ));
-            exit;
-        }
-    }
-
-    private function savePicture($bingbin_id, $picture_name)
-    {
-
-    }
-
-    private function addEcoPoint($bingbin_id, $type_id)
-    {
-        var_dump($bingbin_id);
-        $person = $this->_users->get($bingbin_id)[0];
-        $type = $this->_trashescategories->get($type_id)[0];
-        var_dump($person);
-        var_dump($type);
-        return $this->_users->setEcoPoint($person->id, $person->eco_point + $type->eco_point);
+        echo json_encode($this->infoFor($token_info->id_user));
     }
 
     /*
@@ -303,5 +271,57 @@ class App extends MY_Controller {
         }
 
         echo json_encode($this->_trashescategories->getAll());
+    }
+
+    private function infoFor($bingbin_id)
+    {
+        $person_info = $this->_users->get($bingbin_id)[0];
+
+                return array(
+                    "valid" => TRUE,
+                    "data" => array(
+                        "name" => $person_info->name,
+                        "firstname" => $person_info->firstname,
+                        "email" => $person_info->email,
+                        "img_url" => $person_info->img_url,
+                        "date_nais" => $person_info->date_nais,
+                        "fb_id" => $person_info->fb_id,
+                        "pseudo" => $person_info->pseudo,
+                        "eco_point" => $person_info->eco_point
+                ));
+    }
+
+    private function savePhoto($bingbin_id, $picture_name)
+    {
+        if ($_FILES[$picture_name]['error'] > 0){
+            echo json_encode(array(
+                'valid' => FALSE,
+                'error' => 'Error during the transfert of the picture'
+            ));
+            exit;
+        }
+
+        $name = md5(uniqid(rand(), true));
+        $name .= '.'.substr(mime_content_type($_FILES[$picture_name]['tmp_name']), strpos(mime_content_type($_FILES[$picture_name]['tmp_name']), '/')+1);
+
+        $resultat = move_uploaded_file($_FILES[$picture_name]['tmp_name'],'assets/img/scanResult/'.$name);
+        if (!$resultat){
+            echo json_encode(array(
+                'valid' => TRUE,
+                'url' => 'Error during saving the photo'
+            ));
+            exit;
+        }
+        return $name;
+    }
+
+    private function addEcoPoint($bingbin_id, $type_id)
+    {
+        //var_dump($bingbin_id);
+        $person = $this->_users->get($bingbin_id)[0];
+        $type = $this->_trashescategories->get($type_id)[0];
+        //var_dump($person);
+        //var_dump($type);
+        return $this->_users->setEcoPoint($person->id, $person->eco_point + $type->eco_point);
     }
 }

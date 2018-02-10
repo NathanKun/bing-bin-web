@@ -30,7 +30,8 @@ class HistoriquesModel extends CI_Model
 
         $this->db->set('id', $id);
         $this->db->set('id_trashe', $args['id_trash']);
-        $this->db->sert('id_user', $args['id_user']);
+        $this->db->set('id_user', $args['id_user']);
+        $this->db->set('date_of_scan', time());
 
         if($this->db->insert($this->table)){
             return $id;

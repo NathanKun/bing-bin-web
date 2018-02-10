@@ -114,7 +114,7 @@ class UsersModel extends CI_Model
         $this->db->set('eco_point', $value);
         $this->db->where('id',$id);
 
-        $this->db->update($this->table);
+        return $this->db->update($this->table);
     }
 
     /*
