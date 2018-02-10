@@ -69,7 +69,7 @@ class MY_Controller extends CI_Controller {
 			return FALSE;
 		}
 
-		return $token_info; //return token's info
+		return $token_info;
 	}
 
 	/*

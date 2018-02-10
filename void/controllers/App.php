@@ -20,7 +20,6 @@ class App extends MY_Controller {
         $this->form_validation->set_rules('password','Password','trim|required');
 
         $run = $this->form_validation->run();
-
         if(!$run){
             echo json_encode(array(
                 "valid" => FALSE,
@@ -29,11 +28,11 @@ class App extends MY_Controller {
             exit;
         }
 
+        // $match : contain all information about the user
         $match = $this->_users->logMatchPwd(
             $this->input->post('pseudo'),
             sha1($this->input->post('password'))
         );
-
         unset($match->password);
 
         if(!$match){
@@ -199,7 +198,7 @@ class App extends MY_Controller {
             exit;
         }
         $type_info = $type_info[0];
-        $img_name = $this->savePhoto($token_info->id_user, 'img');
+        $img_name = $this->savePhoto('img');
 
         $id_trash = $this->_trashes->save(array(
             'trashName' => $this->input->post('trashName'),
@@ -291,7 +290,7 @@ class App extends MY_Controller {
                 ));
     }
 
-    private function savePhoto($bingbin_id, $picture_name)
+    private function savePhoto($picture_name)
     {
         if ($_FILES[$picture_name]['error'] > 0){
             echo json_encode(array(
