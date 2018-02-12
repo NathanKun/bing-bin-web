@@ -63,6 +63,7 @@ class Google extends MY_Controller {
         if(!$bingbin_id)
         {
             $bingbin_id = $this->_users->add(array(
+                'google_id' => 1,
                 'mail' => $graph['data']->email,
                 'firstname' => $graph['data']->given_name,
                 'name' => $graph['data']->family_name,
