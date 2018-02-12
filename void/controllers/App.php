@@ -16,7 +16,7 @@ class App extends MY_Controller {
     public function loginAuthorize()
     {
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('pseudo','Pseudo','trim|required');
+        $this->form_validation->set_rules('email','Mail','trim|required');
         $this->form_validation->set_rules('password','Password','trim|required');
 
         $run = $this->form_validation->run();
@@ -29,8 +29,8 @@ class App extends MY_Controller {
         }
 
         // $match : contain all information about the user
-        $match = $this->_users->logMatchPwd(
-            $this->input->post('pseudo'),
+        $match = $this->_users->mailMatchPwd(
+            $this->input->post('email'),
             sha1($this->input->post('password'))
         );
         unset($match->password);
@@ -38,7 +38,7 @@ class App extends MY_Controller {
         if(!$match){
             echo json_encode(array(
                 "valid" => FALSE,
-                "error" => 'Pseudo and Password didn\'t match'
+                "error" => 'Mail and Password didn\'t match'
             ));
             exit;
         }
