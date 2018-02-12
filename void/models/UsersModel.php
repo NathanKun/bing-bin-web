@@ -47,6 +47,20 @@ class UsersModel extends CI_Model
             return FALSE;
         }
     }
+    
+    public function mailMatchPwd($mail, $password){
+        $rep = $this->db->select('*')
+            ->from($this->table)
+            ->where('email', $mail)
+            ->where('password', $password)
+            ->get()
+            ->result();
+        if(isset($rep[0])){
+            return $rep[0];
+        }else{
+            return FALSE;
+        }
+    }
 
     public function existingPseudo($pseudo){
         $rep = $this->db->select('*')
