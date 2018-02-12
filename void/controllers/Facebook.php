@@ -63,6 +63,7 @@ class Facebook extends MY_Controller {
         // if not valide
         if(!$graph['valid']){
             echo json_encode(array(
+                'valid'=>FALSE,
                 "error" => "User Token is not valid or a problem has happening with the cummincation with Facebook server"
             ));
             exit;
@@ -70,18 +71,16 @@ class Facebook extends MY_Controller {
         /**
          * Verify the id and create account if user isn't register
          */
-        $bingbin_id = $this->_users->isRegister_FB($graph['fb_id']);
+        $fb_info = $this->getFbInfo($userToken);
+        $bingbin_id = FALSE;
+        try{
+            $bingbin_id = $this->_users->existingEmail($fb_info->email);
+        }catch(Exception $e){
+            //nothing
+        }
 
         if(!$bingbin_id)
         {
-            $fb_info = $this->getFbInfo($userToken);
-            if(!$fb_info){
-                echo json_encode(array(
-                    "error" => "Impossible to get Facebook's user informations"
-                ));
-                exit;
-            }
-
             $bingbin_id = $this->_users->add(array(
                 'facebook_id' => $graph['fb_id'],
                 'name' => $fb_info->last_name,

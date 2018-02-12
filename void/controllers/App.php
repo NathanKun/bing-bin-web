@@ -299,9 +299,17 @@ class App extends MY_Controller {
             ));
             exit;
         }
+        $extension = substr(mime_content_type($_FILES[$picture_name]['tmp_name']), strpos(mime_content_type($_FILES[$picture_name]['tmp_name']), '/')+1);
+        if($extension != "jpg" && $extension != 'png'){
+            echo json_encode(array(
+                'valid' => FALSE,
+                'error' => 'The file isn\'t a picture'
+            ));
+            exit;
+        }
 
         $name = md5(uniqid(rand(), true));
-        $name .= '.'.substr(mime_content_type($_FILES[$picture_name]['tmp_name']), strpos(mime_content_type($_FILES[$picture_name]['tmp_name']), '/')+1);
+        $name .= '.'.$extension;
 
         $resultat = move_uploaded_file($_FILES[$picture_name]['tmp_name'],'assets/img/scanResult/'.$name);
         if (!$resultat){
