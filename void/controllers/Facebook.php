@@ -82,7 +82,7 @@ class Facebook extends MY_Controller {
         if(!$bingbin_id)
         {
             $bingbin_id = $this->_users->add(array(
-                'facebook_id' => $graph['fb_id'],
+                'facebook_id' => 1,
                 'name' => $fb_info->last_name,
                 'firstname' => $fb_info->first_name,
                 'mail' => $fb_info->email,
