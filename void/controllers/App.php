@@ -300,7 +300,7 @@ class App extends MY_Controller {
             exit;
         }
         $extension = substr(mime_content_type($_FILES[$picture_name]['tmp_name']), strpos(mime_content_type($_FILES[$picture_name]['tmp_name']), '/')+1);
-        if($extension != "jpg" && $extension != 'png'){
+        if(strtolower($extension) != "jpeg" && strtolower($extension) != 'png'){
             echo json_encode(array(
                 'valid' => FALSE,
                 'error' => 'The file isn\'t a picture'
