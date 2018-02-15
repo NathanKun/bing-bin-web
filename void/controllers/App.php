@@ -231,8 +231,11 @@ class App extends MY_Controller {
             ));
             exit;
         }
+        
+        $return = $this->infoFor($token_info->id_user);
+        $return['gain_eco_point'] = $type_info->eco_point;
 
-        echo json_encode($this->infoFor($token_info->id_user));
+        echo json_encode($return);
     }
 
     /*
