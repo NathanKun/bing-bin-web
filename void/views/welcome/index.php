@@ -6,7 +6,7 @@
           </div>
           <div class="col-lg-8 mx-auto">
             <p class="text-faded mb-5"></p>
-            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">À propos Bing Bin</a>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">À propos de Bing Bin</a>
           </div>
         </div>
       </div>
@@ -41,21 +41,14 @@
                <img class="sticker2" src="<?= IMG ?>1x/Fichier 4.png" alt="sticker2" >
              </div>
              <div class="col-lg-5 text-left">
-               <h2 class="section-heading text-black">Ne jeter plus votre argent dans la poubelle.</h2>
+               <h2 class="section-heading text-black">Nous avons du mal à trier.</h2>
                </br>
                <hr class="light2">
                <p class="text-black mb-4">
-                 700€/t pour les biodéchets
-                 </br>
-                 500€/t pour le papier et le carton
-                 </br>
-                 37€/t pour le verre
-                 </br>
-                 1250€/t pour le plastique
-                 </br>
-                 1000€/t pour le metal
-                 </br>
-                 800€/t pour le textile
+                 Les règles de tri changent. De région à région, les règles de tri ne sont pas les mêmes.
+                 Les jours de collectes et les consignes de tri ne se gèrent pas au niveau national mais relève de
+                 la compétence des collectivités locales suivant l’infrastructure disponible. Et encore,
+                 les règles de tri diffèrent de pays en pays. C’est un vrai souci quand on voyage !
                </p>
              </div>
            </div>
@@ -72,16 +65,26 @@
        <div class="container">
          <div class="row">
            <div class="col-lg-5 text-right">
-             <h2 class="section-heading text-black">Importance de mieux trier à la source.</h2>
+             <h2 class="section-heading text-black">Ne jeter plus votre argent dans la poubelle.</</h2>
              </br>
              <hr class="light3">
              <p class="text-black mb-4">
-               Selon une étude de CITEO, une famille de quatre personnes qui
-                trie ses emballages, permet d’éviter l’émission de 115 kg de
-                 CO2 chaque année, soit l’équivalent de 717 km en voiture et
-                  d’économiser 688 kwh soit l’équivalent de 4590 heures de
-                   télévision. Ce sont par ailleurs, autant de pétrole, sable
-                    ou minerai de fer qui ne seront pas prélevés de nos réserves terrestres.
+              700€/t pour les biodéchets
+              </br>
+              </br>
+              500€/t pour le papier et le carton
+              </br>
+              </br>
+              37€/t pour le verre
+              </br>
+              </br>
+              1250€/t pour le plastique
+              </br>
+              </br>
+              1000€/t pour le metal
+              </br>
+              </br>
+              800€/t pour le textile
              </p>
            </div>
            <div class="col-lg-7">
@@ -104,11 +107,11 @@
              <div class="col-lg-12 text-center">
                </br>
                </br>
-               <h3 class="section-heading1 text-white">Bing Bin reconnaît tout type de déchet et vous propose la catégorie de tri appropriée. Events, games, DIY...
+               <h3 class="section-heading1 text-white">Bing Bin reconnaît tout type de déchets et vous propose la catégorie de tri appropriée. Events, games, DIY...
                  Le tri n'a jamais été aussi simple et amusant qu'avec Bing Bin.</h3>
               <hr class="light4">
               </br>
-               <a class="btn btn-light btn-xl js-scroll-trigger" href="#portfolio">Rejoins-nous !</a>
+               <a class="btn btn-light btn-xl js-scroll-trigger" href="#portfolio">Rejoinez-nous !</a>
              </div>
            </div>
          </div>
@@ -189,7 +192,7 @@
 
                   </div>
                   <div class="project-name">
-                    Love
+                    Amour
                   </div>
                 </div>
               </div>
@@ -215,13 +218,13 @@
     </section>
   <!--end of portfolio-->
 
-  <!-- -Get the invite-->
+  <!--
     <section class="bg-dark text-black">
       <div class="container text-center">
         <h2 class="mb-4 "> Invitation </h2>
         <hr class="my-4">
         <br />
-        <p> Rejoint la famille Bing Bin et soit des premiers à tester notre application ! </p>
+        <p> Rejoinez la famille Bing Bin et soit des premiers à tester notre application ! </p>
         <br />
         <div class="row">
           <div class="col-lg-12" >
@@ -233,12 +236,12 @@
                 <input type="text" class="form-control" name="field_mail" id="field_mail" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'" >
               </div>
               </br>
-               <input type="button" class="btn btn-primary btn-xl sr-button" value="Request Invite" id="requestInvite">
+               <input type="button" class="btn btn-primary btn-xl sr-button" value="Demande l'invitation" id="requestInvite">
 
           </center>
           </div>
     </section>
-  <!-- -end of Get the invite-->
+-end of Get the invite-->
 
   <!-- Contact-->
     <section id="contact">
@@ -265,20 +268,21 @@
       </div>
     </section>
 
+<<<<<<< HEAD
    <footer class="bg-footer">
-	  <div class="container" text-white>
-		<div class="row">
-		  <div class="col-sm-8 margin-20" text-white>
-			<ul class="list-inline social">
-			  <li>Rejoins-nous sur    <a href="https://www.facebook.com/bingbinsort/"><i class="fa fa-facebook"></i></li>
-			</ul>
-		  </div>
-		  <div class="col-sm-4 text-right">
-			<p><small>Copyright &copy; Bing Bin 2018. Tous droits résérvés.
-				</small></p>
-		  </div>
-		</div>
-	  </div>
-	</footer>
+          <div class="container" text-white>
+            <div class="row">
+              <div class="col-sm-8 margin-20" text-white>
+                <ul class="list-inline social">
+                  <li>Rejoins-nous sur    <a href="https://www.facebook.com/bingbinsort/"><i class="fa fa-facebook"></i></li>
+                </ul>
+              </div>
+              <div class="col-sm-4 text-right">
+                <p><small>Copyright &copy; Bing Bin 2018. Tous droits résérvés.
+    	            </small></p>
+              </div>
+            </div>
+          </div>
+        </footer>
 
-<!-- end of Contact-->
+=======

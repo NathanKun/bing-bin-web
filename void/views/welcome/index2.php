@@ -8,7 +8,7 @@
     <meta name="description" content="Intelligent trash sorting system">
     <meta name="author" content="Tingyun DU">
 
-    <title>Bing Bin | Sort better, live better </title>
+    <title>Bing Bin | Trions mieux, vivons mieux </title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,20 +40,19 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">About</a>
+              <a class="nav-link js-scroll-trigger" href="#about"> À PROPOS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Join us</a>
+              <a class="nav-link js-scroll-trigger" href="#portfolio">REJOINEZ NOUS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+              <a class="nav-link js-scroll-trigger" href="#contact">CONTACT</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <!-- end of Navigation -->
-
+    <!-- end of Navigatio
     <header class="masthead text-center text-white d-flex">
       <div class="container my-auto">
         <div class="row">
@@ -68,7 +67,7 @@
       </div>
     </header>
 
-    <!-- About-->
+    <!-- Ab
     <section class="bg-primary" id="about">
       <div class="container">
         <div class="row">
@@ -163,7 +162,7 @@
   <!-- end of About-->
 
 
-  <!-- portfolio-->
+  <!-- portfol
     <section class="p-0" id="portfolio">
       <div class="container-fluid p-0">
         <div class="row no-gutters popup-gallery">
@@ -262,7 +261,7 @@
     </section>
   <!--end of portfolio-->
 
-  <!-- -Get the invite-->
+  <!-- -Get the invite
     <section class="bg-dark text-black">
       <div class="container text-center">
         <h2 class="mb-4 "> Get the invite </h2>
@@ -288,7 +287,7 @@
     </section>
   <!-- -end of Get the invite-->
 
-  <!-- Contact-->
+  <!-- Contact
     <section id="contact">
       <div class="container">
         <div class="row">
@@ -312,26 +311,6 @@
         </div>
       </div>
     </section>
-
-   <footer class="bg-footer">
-          <div class="container" text-white>
-            <div class="row">
-              <div class="col-sm-8 margin-20" text-white>
-                <ul class="list-inline social">
-                  <li>Connect with us on    <a href="https://www.facebook.com/bingbinsort/"><i class="fa fa-facebook"></i>    <a href="https://www.instagram.com/kumparun/"><i class="fa fa-instagram"></i></a></li>
-                </ul>
-              </div>
-              <div class="col-sm-4 text-right">
-                <p><small>Copyright &copy; Bing Bin 2018. All rights reserved.
-    	            </small></p>
-              </div>
-            </div>
-          </div>
-        </footer>
-
-<!-- end of Contact-->
-
-
 
 
     <!-- Bootstrap core JavaScript -->
