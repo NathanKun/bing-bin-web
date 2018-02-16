@@ -11,7 +11,7 @@
         <a class="nav-link js-scroll-trigger" href="#about">À PROPOS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#portfolio">JOIGNEZ NOUS</a>
+        <a class="nav-link js-scroll-trigger" href="#portfolio">POURQUOI BING BIN</a>
       </li>
       <li class="nav-item">
         <a class="nav-link js-scroll-trigger" href="#contact">CONTACT</a>

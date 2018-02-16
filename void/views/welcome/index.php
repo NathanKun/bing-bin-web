@@ -107,7 +107,7 @@
                  Le tri n'a jamais été aussi simple et amusant qu'avec Bing Bin.</h3>
               <hr class="light4">
               </br>
-               <a class="btn btn-light btn-xl js-scroll-trigger" href="#portfolio">Rejoinez-nous !</a>
+               <a class="btn btn-light btn-xl js-scroll-trigger" href="#portfolio">POURQUOI BING BIN?</a>
              </div>
            </div>
          </div>
