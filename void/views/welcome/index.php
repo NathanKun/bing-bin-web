@@ -1,3 +1,56 @@
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Intelligent trash sorting system">
+    <meta name="author" content="Tingyun DU">
+
+    <title>Bing Bin | Trions mieux, vivons mieux </title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Futura:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/creative.min.css" rel="stylesheet">
+    <link href="css/creative.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="logo" href="index.html"><img src="img/logo2.png" alt="Logo"></a>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#about"> À PROPOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#portfolio">REJOINEZ NOUS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#contact">CONTACT</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
 <header class="masthead text-center text-white d-flex">
       <div class="container my-auto">
         <div class="row">
@@ -65,7 +118,7 @@
        <div class="container">
          <div class="row">
            <div class="col-lg-5 text-right">
-             <h2 class="section-heading text-black">Ne jeter plus votre argent dans la poubelle.</</h2>
+             <h2 class="section-heading text-black">Ne jeter plus votre argent dans la poubelle.</h2>
              </br>
              <hr class="light3">
              <p class="text-black mb-4">
@@ -218,31 +271,6 @@
     </section>
   <!--end of portfolio-->
 
-  <!--
-    <section class="bg-dark text-black">
-      <div class="container text-center">
-        <h2 class="mb-4 "> Invitation </h2>
-        <hr class="my-4">
-        <br />
-        <p> Rejoinez la famille Bing Bin et soit des premiers à tester notre application ! </p>
-        <br />
-        <div class="row">
-          <div class="col-lg-12" >
-            <center>
-              <div class="form-group">
-                <input type="text" class="form-control" name="field_name" id="field_name" placeholder="Enter name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter name'" >
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="field_mail" id="field_mail" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'" >
-              </div>
-              </br>
-               <input type="button" class="btn btn-primary btn-xl sr-button" value="Demande l'invitation" id="requestInvite">
-
-          </center>
-          </div>
-    </section>
--end of Get the invite-->
-
   <!-- Contact-->
     <section id="contact">
       <div class="container">
@@ -268,7 +296,6 @@
       </div>
     </section>
 
-<<<<<<< HEAD
    <footer class="bg-footer">
           <div class="container" text-white>
             <div class="row">
@@ -284,5 +311,3 @@
             </div>
           </div>
         </footer>
-
-=======
