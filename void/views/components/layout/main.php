@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Intelligent trash sorting system">
         <meta name="author" content="Tingyun DU">
-        <title>BingBin | Sort better, live better</title>
+        <title>BingBin | Trions mieux, vivons mieux</title>
 
         <!-- Bootstrap core CSS -->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -30,6 +30,29 @@
         ?>
 
     </head>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="logo" href="<?= site_url(); ?>"><img src="<?= IMG ?>logo2.png" alt="Logo"></a>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">À PROPOS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#portfolio">JOIGNEZ NOUS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#contact">CONTACT</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
 
     <!-- BODY -->
     <body id="page-top">
@@ -53,7 +76,7 @@ echo $v;
       <div class="row">
         <div class="col-sm-4 margin-20" text-white>
           <ul class="list-inline social">
-            <li>Connect with us on    <a href="https://www.facebook.com/bingbinsort/"><i class="fa fa-facebook"></i>    <a href="https://www.instagram.com/kumparun/"><i class="fa fa-instagram"></i></a></li>
+          <!--  <li>Rejoinez-nous sur   <a href="https://www.facebook.com/bingbinsort/"><i class="fa fa-facebook"></i></a></li>-->
           </ul>
         </div>
         <div class="col-sm-4">
@@ -64,7 +87,7 @@ echo $v;
             </div>
         </div>
         <div class="col-sm-4 text-right">
-          <p><small>Copyright &copy; Bing Bin 2018. All rights reserved.
+          <p><small>Copyright &copy; Bing Bin 2018. Tous droits résérvés.
               </small></p>
         </div>
       </div>
