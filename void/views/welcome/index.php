@@ -240,9 +240,9 @@
     </section>
 
    <footer class="bg-footer">
-          <div class="container" text-white>
+          <div class="container text-white">
             <div class="row">
-              <div class="col-sm-8 margin-20" text-white>
+              <div class="col-sm-8 margin-20 text-white">
                 <ul class="list-inline social">
                   <li>Rejoins-nous sur    <a href="https://www.facebook.com/bingbinsort/"><i class="fa fa-facebook"></i></li>
                 </ul>
