@@ -265,23 +265,20 @@
       </div>
     </section>
 
-<<<<<<< HEAD
    <footer class="bg-footer">
-          <div class="container" text-white>
-            <div class="row">
-              <div class="col-sm-8 margin-20" text-white>
-                <ul class="list-inline social">
-                  <li>Rejoins-nous sur    <a href="https://www.facebook.com/bingbinsort/"><i class="fa fa-facebook"></i></li>
-                </ul>
-              </div>
-              <div class="col-sm-4 text-right">
-                <p><small>Copyright &copy; Bing Bin 2018. Tous droits résérvés.
-    	            </small></p>
-              </div>
-            </div>
-          </div>
-        </footer>
+	  <div class="container" text-white>
+		<div class="row">
+		  <div class="col-sm-8 margin-20" text-white>
+			<ul class="list-inline social">
+			  <li>Rejoins-nous sur    <a href="https://www.facebook.com/bingbinsort/"><i class="fa fa-facebook"></i></li>
+			</ul>
+		  </div>
+		  <div class="col-sm-4 text-right">
+			<p><small>Copyright &copy; Bing Bin 2018. Tous droits résérvés.
+				</small></p>
+		  </div>
+		</div>
+	  </div>
+	</footer>
 
-=======
->>>>>>> 778d4224cfb8be1194588dc9c58a0b2c5624982b
 <!-- end of Contact-->
