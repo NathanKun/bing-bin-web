@@ -208,7 +208,8 @@ class Ranking extends MY_Controller {
                 'eco_point' => $v,
                 'name' => $user->name.' '.$user->firstname,
                 'email' => $user->email,
-                'pseudo' => $user->pseudo
+                'pseudo' => $user->pseudo,
+                'img_url' => $user->img_url
             );
             $prec_value = $v;
         }
