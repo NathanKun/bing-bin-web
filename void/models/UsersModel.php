@@ -47,7 +47,7 @@ class UsersModel extends CI_Model
             return FALSE;
         }
     }
-    
+
     public function mailMatchPwd($mail, $password){
         $rep = $this->db->select('*')
             ->from($this->table)
@@ -129,6 +129,39 @@ class UsersModel extends CI_Model
         $this->db->where('id',$id);
 
         return $this->db->update($this->table);
+    }
+
+    public function setRabbit($id, $value)
+    {
+        $this->db->set('id_rabbit', $value);
+        $this->db->where('id',$id);
+
+        return $this->db->update($this->table);
+    }
+
+    public function setLeaf($id, $value)
+    {
+        $this->db->set('id_leaf', $value);
+        $this->db->where('id',$id);
+
+        return $this->db->update($this->table);
+    }
+
+    public function incSunPoint($id_user)
+    {
+        $rep = $this->db->select('*')
+            ->from($this->table)
+            ->where('id', $id_user)
+            ->get()
+            ->result();
+        if(isset($rep[0])){
+            $this->db->set('sun_point', $rep[0]->sun_point + 1)
+                ->where('id', $id_user);
+            $this->db->update($this->table);
+            return TRUE;
+        }else{
+            return false;
+        }
     }
 
     /*
