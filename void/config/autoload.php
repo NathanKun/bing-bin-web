@@ -138,5 +138,6 @@ $autoload['model'] = array(
     'BingBinTokensModel' => '_bingbintokens',
     'TrashesCategoriesModel' => '_trashescategories',
     'TrashesModel' => '_trashes',
-    'HistoriquesModel' => '_historiques'
+    'HistoriquesModel' => '_historiques',
+    'SunHistoriquesModel' => '_sunhistoriques'
 );

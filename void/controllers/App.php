@@ -231,7 +231,7 @@ class App extends MY_Controller {
             ));
             exit;
         }
-        
+
         $return = $this->infoFor($token_info->id_user);
         $return['gain_eco_point'] = $type_info->eco_point;
 
@@ -275,6 +275,209 @@ class App extends MY_Controller {
         echo json_encode($this->_trashescategories->getAll());
     }
 
+    /*
+     * Definition
+     * ==========
+     * Args (POST) :
+     * - BingBinToken
+     * - targetId
+     * /////////////////////////////
+     * Way of work
+     * ===========
+     * send sun point and save it if limit don't reach
+     */
+    public function sendSunPoint()
+    {
+        //
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('BingBinToken','BingBinToken','trim|required');
+        $this->form_validation->set_rules('targetId','TargetId','trim|required');
+
+        $run = $this->form_validation->run();
+        if(!$run){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Argument Missing"
+            ));
+            exit;
+        }
+
+        $token_info = $this->checkToken($this->input->post('BingBinToken'));
+        if(!$token_info){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Invalid token"
+            ));
+            exit;
+        }
+        $date = new DateTime();
+        $timestamp = strtotime($date->format('d-m-Y'));
+
+        //check limit of 5 suns send per day
+        $sendSuns = $this->_sunhistoriques->inDuration($token_info->id_user, $timestamp);
+
+        if(sizeof($sendSuns) >= 5){
+            echo json_encode(array(
+                "valid" => TRUE,
+                "limit_reach" => TRUE,
+                'sending_saved' => FALSE
+            ));
+            exit;
+        }
+        //add new sun sending and return
+        $insertion = $this->_sunhistoriques->save(array(
+            'id_sender' => $token_info->id_user,
+            'id_receiver' => $this->input->post('targetId')
+        ));
+
+        if($insertion){
+            $this->_users->incSunPoint($this->input->post('targetId'));
+            echo json_encode(array(
+                "valid" => TRUE,
+                "limit_reach" => FALSE,
+                'sending_saved' => TRUE
+            ));
+            exit;
+        }else{
+            echo json_encode(array(
+                "valid" => FALSE,
+                "limit_reach" => FALSE,
+                'sending_saved' => FALSE
+            ));
+            exit;
+        }
+    }
+
+    /*
+     * Definition
+     * ==========
+     * Args (POST) :
+     * - BingBinToken
+     * /////////////////////////////
+     * Way of work
+     * ===========
+     * return eco_point of a user
+     */
+    public function getMySunPointHistory()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('BingBinToken','BingBinToken','trim|required');
+
+        $run = $this->form_validation->run();
+        if(!$run){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Argument Missing"
+            ));
+            exit;
+        }
+        $token_info = $this->checkToken($this->input->post('BingBinToken'));
+        if(!$token_info){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Invalid token"
+            ));
+            exit;
+        }
+
+        $user = $this->_users->get($token_info->id_user)[0];
+        echo json_encode(array(
+            'valid'=> TRUE,
+            'sun_point' => $user->sun_point
+        ));
+    }
+
+    /*
+     * Definition
+     * ==========
+     * Args (POST) :
+     * - BingBinToken
+     * /////////////////////////////
+     * Way of work
+     * ===========
+     * update rabbit id for profil
+     */
+    public function modifyRabbit()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('BingBinToken','BingBinToken','trim|required');
+        $this->form_validation->set_rules('rabbitId','Rabbit id','trim|required');
+
+        $run = $this->form_validation->run();
+        if(!$run){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Argument Missing"
+            ));
+            exit;
+        }
+        $token_info = $this->checkToken($this->input->post('BingBinToken'));
+        if(!$token_info){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Invalid token"
+            ));
+            exit;
+        }
+
+        if($this->_users->setRabbit($token_info->id_user, $this->input->post('rabbitId'))){
+            echo json_encode(array(
+                'valid'=> TRUE
+            ));
+        }else{
+            echo json_encode(array(
+                'valid'=> FALSE
+            ));
+        }
+    }
+
+    /*
+     * Definition
+     * ==========
+     * Args (POST) :
+     * - BingBinToken
+     * /////////////////////////////
+     * Way of work
+     * ===========
+     * update leaf id for profil
+     */
+    public function modifyLeaf()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('BingBinToken','BingBinToken','trim|required');
+        $this->form_validation->set_rules('leafId','Leaf id','trim|required');
+
+        $run = $this->form_validation->run();
+        if(!$run){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Argument Missing"
+            ));
+            exit;
+        }
+        $token_info = $this->checkToken($this->input->post('BingBinToken'));
+        if(!$token_info){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Invalid token"
+            ));
+            exit;
+        }
+
+        if($this->_users->setLeaf($token_info->id_user, $this->input->post('leafId'))){
+            echo json_encode(array(
+                'valid'=> TRUE
+            ));
+        }else{
+            echo json_encode(array(
+                'valid'=> FALSE
+            ));
+        }
+    }
+
     private function infoFor($bingbin_id)
     {
         $person_info = $this->_users->get($bingbin_id)[0];
@@ -289,7 +492,10 @@ class App extends MY_Controller {
                         "date_nais" => $person_info->date_nais,
                         "fb_id" => $person_info->fb_id,
                         "pseudo" => $person_info->pseudo,
-                        "eco_point" => $person_info->eco_point
+                        "eco_point" => $person_info->eco_point,
+                        'sun_point' => $person_info->sun_point,
+                        'id_rabbit' => $person_info->id_usagi,
+                        'id_leaf' => $person_info->id_leaf
                 ));
     }
 

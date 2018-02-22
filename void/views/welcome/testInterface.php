@@ -67,6 +67,44 @@
 
 <?= form_close(); ?>
 
+<?= form_open('app/sendSunPoint'); ?>
+
+<?= form_input(array(
+                            'name' => 'BingBinToken',
+                            'class' => 'form-control input-small',
+                            'placeholder' => 'token sun'
+                        )
+                    ) ?>
+                    <?= form_input(array(
+                            'name' => 'targetId',
+                            'class' => 'form-control input-small',
+                            'placeholder' => 'targetID'
+                        )
+                    ) ?>
+<?= form_submit(array(
+                'name' => 'submit',
+                'value' => 'Test',
+                'class' => 'btn btn-primary'
+            )); ?>
+
+<?= form_close(); ?>
+<?= form_open('app/getMySunPointHistory'); ?>
+
+<?= form_input(array(
+                            'name' => 'BingBinToken',
+                            'class' => 'form-control input-small',
+                            'placeholder' => 'sun sol'
+                        )
+                    ) ?>
+<?= form_submit(array(
+                'name' => 'submit',
+                'value' => 'Test',
+                'class' => 'btn btn-primary'
+            )); ?>
+
+<?= form_close(); ?>
+
+
 <?= form_open('app/getTrashesCategories'); ?>
 
 <?= form_input(array(

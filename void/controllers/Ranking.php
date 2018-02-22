@@ -209,7 +209,8 @@ class Ranking extends MY_Controller {
                 'name' => $user->name.' '.$user->firstname,
                 'email' => $user->email,
                 'pseudo' => $user->pseudo,
-                'img_url' => $user->img_url
+                'img_url' => $user->img_url,
+                'sun_point' => $user->sun_point
             );
             $prec_value = $v;
         }
