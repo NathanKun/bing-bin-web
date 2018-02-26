@@ -9,6 +9,7 @@
         <title>BingBin | Trions mieux, vivons mieux</title>
 
         <!-- Bootstrap core CSS -->
+        <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
         <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom fonts for this template -->
@@ -22,6 +23,7 @@
         <!-- Custom styles for this template -->
         <link href="assets/css/creative.min.css" rel="stylesheet">
         <link href="assets/css/creative.css" rel="stylesheet">
+        <link href="assets/css/mine.css" rel="stylesheet">
         <?php
             foreach($css as $v)
             {
