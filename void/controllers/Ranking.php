@@ -206,7 +206,7 @@ class Ranking extends MY_Controller {
             $result[$l] = array(
                 'rank' => $compteur,
                 'eco_point' => $v,
-				"id" -> $user->id,
+				"id" => $user->id,
 				"name" => $user->name,
 				"firstname" => $user->firstname,
 				"email" => $user->email,

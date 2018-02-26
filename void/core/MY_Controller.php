@@ -120,7 +120,7 @@ class MY_Controller extends CI_Controller {
         $person_info = $this->_users->get($bingbin_id)[0];
 
                 return array(
-						"id" -> $person_info->id,
+						"id" => $person_info->id,
                         "name" => $person_info->name,
                         "firstname" => $person_info->firstname,
                         "email" => $person_info->email,
