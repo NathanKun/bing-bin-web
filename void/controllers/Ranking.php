@@ -206,11 +206,16 @@ class Ranking extends MY_Controller {
             $result[$l] = array(
                 'rank' => $compteur,
                 'eco_point' => $v,
-                'name' => $user->name.' '.$user->firstname,
-                'email' => $user->email,
-                'pseudo' => $user->pseudo,
-                'img_url' => $user->img_url,
-                'sun_point' => $user->sun_point
+				"name" => $user->name,
+				"firstname" => $user->firstname,
+				"email" => $user->email,
+				"img_url" => $user->img_url,
+				"date_nais" => $user->date_nais,
+				"fb_id" => $user->fb_id,
+				"pseudo" => $user->pseudo,
+				'sun_point' => $user->sun_point,
+				'id_rabbit' => $user->id_usagi,
+				'id_leaf' => $user->id_leaf
             );
             $prec_value = $v;
         }
