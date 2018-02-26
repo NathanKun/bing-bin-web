@@ -47,7 +47,7 @@ class App extends MY_Controller {
 
         echo json_encode(array(
             "valid" => TRUE,
-            "data" => $match,
+            "data" => $this->infoFor($$match->id),
             "token" => $this->updateToken($match->id)
         ));
     }
@@ -147,7 +147,10 @@ class App extends MY_Controller {
         }
 
         //return information
-        echo json_encode($this->infoFor($token_info->id_user));
+        echo json_encode(array(
+            'valid' => TRUE,
+            'data' => $this->infoFor($token_info->id_user)
+        ));
     }
 
     /*
@@ -232,10 +235,11 @@ class App extends MY_Controller {
             exit;
         }
 
-        $return = $this->infoFor($token_info->id_user);
-        $return['gain_eco_point'] = $type_info->eco_point;
-
-        echo json_encode($return);
+        echo json_encode(array(
+            'valid' => TRUE,
+            'data' => $this->infoFor($token_info->id_user),
+            'gain_eco_point' => $type_info->eco_point
+        ));
     }
 
     /*
@@ -342,7 +346,8 @@ class App extends MY_Controller {
             echo json_encode(array(
                 "valid" => FALSE,
                 "limit_reach" => FALSE,
-                'sending_saved' => FALSE
+                'sending_saved' => FALSE,
+                'data' => $this->infoFor($token_info->id_user)
             ));
             exit;
         }
@@ -384,7 +389,8 @@ class App extends MY_Controller {
         $user = $this->_users->get($token_info->id_user)[0];
         echo json_encode(array(
             'valid'=> TRUE,
-            'sun_point' => $user->sun_point
+            'sun_point' => $user->sun_point,
+            'data' => $this->infoFor($token_info->id_user)
         ));
     }
 
@@ -424,7 +430,8 @@ class App extends MY_Controller {
 
         if($this->_users->setRabbit($token_info->id_user, $this->input->post('rabbitId'))){
             echo json_encode(array(
-                'valid'=> TRUE
+                'valid'=> TRUE,
+                'data' => $this->infoFor($token_info->id_user)
             ));
         }else{
             echo json_encode(array(
@@ -469,34 +476,14 @@ class App extends MY_Controller {
 
         if($this->_users->setLeaf($token_info->id_user, $this->input->post('leafId'))){
             echo json_encode(array(
-                'valid'=> TRUE
+                'valid'=> TRUE,
+                'data' => $this->infoFor($token_info->id_user)
             ));
         }else{
             echo json_encode(array(
                 'valid'=> FALSE
             ));
         }
-    }
-
-    private function infoFor($bingbin_id)
-    {
-        $person_info = $this->_users->get($bingbin_id)[0];
-
-                return array(
-                    "valid" => TRUE,
-                    "data" => array(
-                        "name" => $person_info->name,
-                        "firstname" => $person_info->firstname,
-                        "email" => $person_info->email,
-                        "img_url" => $person_info->img_url,
-                        "date_nais" => $person_info->date_nais,
-                        "fb_id" => $person_info->fb_id,
-                        "pseudo" => $person_info->pseudo,
-                        "eco_point" => $person_info->eco_point,
-                        'sun_point' => $person_info->sun_point,
-                        'id_rabbit' => $person_info->id_usagi,
-                        'id_leaf' => $person_info->id_leaf
-                ));
     }
 
     private function savePhoto($picture_name)

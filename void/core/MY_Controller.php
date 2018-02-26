@@ -114,4 +114,23 @@ class MY_Controller extends CI_Controller {
 			return false;
 		}
 	}
+
+	protected function infoFor($bingbin_id)
+    {
+        $person_info = $this->_users->get($bingbin_id)[0];
+
+                return array(
+                        "name" => $person_info->name,
+                        "firstname" => $person_info->firstname,
+                        "email" => $person_info->email,
+                        "img_url" => $person_info->img_url,
+                        "date_nais" => $person_info->date_nais,
+                        "fb_id" => $person_info->fb_id,
+                        "pseudo" => $person_info->pseudo,
+                        "eco_point" => $person_info->eco_point,
+                        'sun_point' => $person_info->sun_point,
+                        'id_rabbit' => $person_info->id_usagi,
+                        'id_leaf' => $person_info->id_leaf
+                );
+    }
 }
