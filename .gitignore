@@ -1,3 +1,10 @@
+.user.ini
+assets/img/scanResult/
+imgs
+log.log
+phpBingMyBinAdmin/
+
+
 .DS_Store
 
 application/cache/*
