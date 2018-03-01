@@ -314,6 +314,14 @@ class App extends MY_Controller {
             ));
             exit;
         }
+
+        if($token_info->id_user == $this->input->post('targetId')){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "You can't send point to yourself"
+            ));
+            exit;
+        }
         $date = new DateTime();
         $timestamp = strtotime($date->format('d-m-Y'));
 
@@ -391,6 +399,36 @@ class App extends MY_Controller {
             'valid'=> TRUE,
             'sun_point' => $user->sun_point,
             'data' => $this->infoFor($token_info->id_user)
+        ));
+    }
+
+    public function getMySummary()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('BingBinToken','BingBinToken','trim|required');
+
+        $run = $this->form_validation->run();
+        if(!$run){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Argument Missing"
+            ));
+            exit;
+        }
+        $token_info = $this->checkToken($this->input->post('BingBinToken'));
+        if(!$token_info){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Invalid token"
+            ));
+            exit;
+        }
+
+        echo json_encode(array(
+            'valid' => TRUE,
+            'data' => $this->infoFor($token_info->id_user),
+            'summary' => $this->_historiques->summary($token_info->id_user)
         ));
     }
 

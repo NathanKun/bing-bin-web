@@ -104,6 +104,22 @@
 
 <?= form_close(); ?>
 
+<?= form_open('app/getMySummary'); ?>
+
+<?= form_input(array(
+                            'name' => 'BingBinToken',
+                            'class' => 'form-control input-small',
+                            'placeholder' => 'summary'
+                        )
+                    ) ?>
+<?= form_submit(array(
+                'name' => 'submit',
+                'value' => 'Test',
+                'class' => 'btn btn-primary'
+            )); ?>
+
+<?= form_close(); ?>
+
 
 <?= form_open('app/getTrashesCategories'); ?>
 

@@ -49,4 +49,16 @@ class HistoriquesModel extends CI_Model
         ->get()
         ->result();
     }
+
+    public function summary($id_user)
+    {
+        $ret = $this->db->select('count(id_type) as quantity, id_type as type_trash')
+            ->from($this->table)
+            ->join('Trashes', $this->table.'.id_trashe = Trashes.id')
+            ->where('id_user', $id_user)
+            ->group_by('id_type')
+            ->get()
+            ->result();
+        return $ret;
+    }
 }
