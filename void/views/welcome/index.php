@@ -17,17 +17,29 @@
 <section class="bg-primary" id="about">
   <div class="container">
     <div class="row">
-      <div class="col-md-6 text-right">
-        <h2 class="section-heading text-white">Trop de déchets, peu de recyclages.</h2>
+      <div class="col-md-6 col-xs-12 col-sm-12">
+        <div class="hidden-sm hidden-xs text-right">
+          <h2 class="section-heading text-white">Trop de déchets, peu de recyclages.</h2>
           <hr class="light">
-        <p class="text-faded mb-4">Chaque année en France, une famille de quatre personnes
-              produit près de 1,75 tonnes de déchets par an, dont plus de 50 %
-              du volume peut être valorisé, soit recyclé, soit transformé
-              en compost ou en gaz de méthanisation. Parmi tous ces
-              déchets seulement 35% sont recyclés.
-        </p>
+          <p class="text-faded mb-4">Chaque année en France, une famille de quatre personnes
+                produit près de 1,75 tonnes de déchets par an, dont plus de 50 %
+                du volume peut être valorisé, soit recyclé, soit transformé
+                en compost ou en gaz de méthanisation. Parmi tous ces
+                déchets seulement 35% sont recyclés.
+          </p>
+        </div>
+        <div class="hidden-md hidden-lg text-center">
+          <h2 class="section-heading text-white">Trop de déchets, peu de recyclages.</h2>
+          <hr class="light">
+          <p class="text-faded mb-4">Chaque année en France, une famille de quatre personnes
+                produit près de 1,75 tonnes de déchets par an, dont plus de 50 %
+                du volume peut être valorisé, soit recyclé, soit transformé
+                en compost ou en gaz de méthanisation. Parmi tous ces
+                déchets seulement 35% sont recyclés.
+          </p>
+        </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 text-center">
           <img class="img-responsive" src="<?= IMG ?>1x/Fichier 3.png" alt="sticker" >
       </div>
     </div>
@@ -37,26 +49,52 @@
 <section class="bg-primary2">
   <div class="container">
     <div class="row">
-      <div class="col-lg-7">
+      <div class="col-lg-7 text-center">
         <img class="img-responsive" src="<?= IMG ?>1x/Fichier 4.png" alt="sticker2" >
       </div>
-      <div class="col-lg-5 text-center">
-        <h2 class="section-heading text-black">Nous avons du mal à trier.</h2>
-        <hr class="light-green">
-        <p class="text-black mb-4">Les règles de tri changent. De région à région, les règles de tri ne sont pas les mêmes.
-          Les jours de collectes et les consignes de tri ne se gèrent pas au niveau national mais relève de
-          la compétence des collectivités locales suivant l’infrastructure disponible. Et encore,
-          les règles de tri diffèrent de pays en pays. C’est un vrai souci quand on voyage !
-        </p>
+      <div class="col-lg-5">
+        <div class="hidden-sm hidden-xs">
+          <div class="text-left">
+            <h2 class="section-heading text-black">Nous avons du mal à trier.</h2>
+            <hr class="light-green">
+            <p class="text-black mb-4">Les règles de tri changent. De région à région, les règles de tri ne sont pas les mêmes.
+              Les jours de collectes et les consignes de tri ne se gèrent pas au niveau national mais relève de
+              la compétence des collectivités locales suivant l’infrastructure disponible. Et encore,
+              les règles de tri diffèrent de pays en pays. C’est un vrai souci quand on voyage !
+            </p>
+          </div>
+        </div>
+        <div class="hidden-md hidden-lg">
+          <div class="text-center">
+            <h2 class="section-heading text-black">Nous avons du mal à trier.</h2>
+            <hr class="light-green">
+            <p class="text-black mb-4">Les règles de tri changent. De région à région, les règles de tri ne sont pas les mêmes.
+              Les jours de collectes et les consignes de tri ne se gèrent pas au niveau national mais relève de
+              la compétence des collectivités locales suivant l’infrastructure disponible. Et encore,
+              les règles de tri diffèrent de pays en pays. C’est un vrai souci quand on voyage !
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
+</section>
+<section>
   <div class="container">
     <div class="row">
-      <div class="col-lg-5 text-center">
-        <h2 class="section-heading text-black">Ne jeter plus votre argent dans la poubelle.</h2>
-        <hr class="light-green">
+      <div class="col-lg-5">
+        <div class="hidden-md hidden-lg">
+          <div class="text-center">
+            <h2 class="section-heading text-black">Ne jeter plus votre argent dans la poubelle.</h2>
+            <hr class="light-green">
+          </div>
+        </div>
+        <div class="hidden-sm hidden-xs">
+          <div class="text-right">
+            <h2 class="section-heading text-black">Ne jeter plus votre argent dans la poubelle.</h2>
+            <hr class="light-green">
+          </div>
+        </div>
         <div class="hidden-md hidden-lg">
           <div class="text-center">
             <p>
@@ -102,8 +140,8 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-7">
-        <img class="img-responsive" src="<?= IMG ?>1x/Fichier 5.png" alt="sticker" >
+      <div class="col-lg-7 text-center">
+        <img class="img-responsive hidden-sm hidden-xs" src="<?= IMG ?>1x/Fichier 5.png" alt="sticker" >
       </div>
     </div>
   </div>
