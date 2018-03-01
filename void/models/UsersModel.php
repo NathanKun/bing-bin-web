@@ -133,7 +133,7 @@ class UsersModel extends CI_Model
 
     public function setRabbit($id, $value)
     {
-        $this->db->set('id_rabbit', $value);
+        $this->db->set('id_usagi', $value);
         $this->db->where('id',$id);
 
         return $this->db->update($this->table);
