@@ -402,11 +402,12 @@ class App extends MY_Controller {
         ));
     }
 
-    public function getMySummary()
+    public function getMyScanHistory()
     {
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('BingBinToken','BingBinToken','trim|required');
+        $this->form_validation->set_rules('limit','limit','trim|is_natural_no_zero');
 
         $run = $this->form_validation->run();
         if(!$run){
@@ -425,10 +426,46 @@ class App extends MY_Controller {
             exit;
         }
 
+        $limit = false;
+        if($this->input->post('limit') !== "")
+        {
+            $limit = $this->input->post('limit');
+        }
+
         echo json_encode(array(
             'valid' => TRUE,
             'data' => $this->infoFor($token_info->id_user),
-            'summary' => $this->_historiques->summary($token_info->id_user)
+            'history' => $this->_historiques->limited_history($token_info->id_user, $limit)
+        ));
+    }
+
+    public function getMySummary()
+    {
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('BingBinToken','BingBinToken','trim|required');
+
+        $run = $this->form_validation->run();
+        if(!$run){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Argument Missing or incorrect"
+            ));
+            exit;
+        }
+        $token_info = $this->checkToken($this->input->post('BingBinToken'));
+        if(!$token_info){
+            echo json_encode(array(
+                "valid" => FALSE,
+                "error" => "Invalid token"
+            ));
+            exit;
+        }
+
+        echo json_encode(array(
+            'valid' => TRUE,
+            'data' => $this->infoFor($token_info->id_user),
+            'summmary' => $this->_historiques->summary($token_info->id_user)
         ));
     }
 

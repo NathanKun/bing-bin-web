@@ -61,4 +61,18 @@ class HistoriquesModel extends CI_Model
             ->result();
         return $ret;
     }
+
+    public function limited_history($id_user, $limit = false)
+    {
+        $this->db->select('*')
+            ->from($this->table)
+            ->join('Trashes', $this->table.'.id_trashe = Trashes.id')
+            ->where('id_user', $id_user);
+        if($limit !== FALSE)
+        {
+            $this->db->limit($limit);
+        }
+        return $this->db->get()
+            ->result();
+    }
 }
