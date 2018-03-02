@@ -465,7 +465,7 @@ class App extends MY_Controller {
         echo json_encode(array(
             'valid' => TRUE,
             'data' => $this->infoFor($token_info->id_user),
-            'summmary' => $this->_historiques->summary($token_info->id_user)
+            'summary' => $this->_historiques->summary($token_info->id_user)
         ));
     }
 
