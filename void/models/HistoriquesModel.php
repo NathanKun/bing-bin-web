@@ -67,6 +67,7 @@ class HistoriquesModel extends CI_Model
         $this->db->select('*')
             ->from($this->table)
             ->join('Trashes', $this->table.'.id_trashe = Trashes.id')
+            ->join('TrashesTypes', 'Trashes.id_type = TrashesTypes.id')
             ->where('id_user', $id_user)
             ->order_by("date_of_scan", "desc");
         if($limit !== FALSE)
