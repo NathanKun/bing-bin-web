@@ -138,6 +138,7 @@ class Ranking extends MY_Controller {
             if($l == $token_info->id_user){
                 $user_rank = $v['rank'];
             }
+            $v['has_receive_sun_point'] = $this->hasSendSunPointTo($token_info->id_user, $l);
         }
 
         echo json_encode(array(
@@ -150,7 +151,8 @@ class Ranking extends MY_Controller {
     // duration = in_list[day,month,week,all]
     /*
      * This function will select and compute all the point win during the
-     * selected duration and return a table from an other function
+     * selected duration and return short with all info of users
+     * $id_user => array_user_info()
      */
     private function periodLadder($duration, $limit = false)
     {
@@ -196,6 +198,7 @@ class Ranking extends MY_Controller {
     /*
      * This function will compute the rank function of user's eco_point and
      * return a table with user's information
+     * $ladders : $id_user => amount_eco_point (associative tab)
      */
     private function computeLadder($ladders, $limit = false)
     {
@@ -205,7 +208,11 @@ class Ranking extends MY_Controller {
         $found = false;
         $prec_value = 0;
         foreach($ladders as $l => $v){
-            $result[$l] = 0;
+            $result[$l] = 0; // initialise value in tab
+            
+            // incremente the ladder value
+            // if amount_eco_point is the same as the user before, same rank so inc a tmp value
+            // else inc rank and reset the tmp value
             if($compteur >=1 && $v == $prec_value){
                 $i++;
             }else{
@@ -239,5 +246,20 @@ class Ranking extends MY_Controller {
             }
         }
         return $result;
+    }
+    
+    private function hasSendSunPointTo($id_user, $id_target)
+    {
+        $date = new DateTime();
+        $duration = $timestamp = strtotime($date->format('d-m-Y'));
+        
+        $sun_point_histo = $this->_sunhistoriques->inDuration($$id_user, $duration);
+        foreach($sun_point_histo as $k=>$v)
+        {
+            if($v->id_receiver_user == $id_target){
+                return true;
+            }
+        }
+        return false;
     }
 }
