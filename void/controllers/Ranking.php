@@ -134,7 +134,7 @@ class Ranking extends MY_Controller {
         $ladder = $this->periodLadder($duration, $limit);
         $user_rank = 0;
 
-        foreach($ladder as $l => $v){
+        foreach($ladder as $l => &$v){
             if($l == $token_info->id_user){
                 $user_rank = $v['rank'];
             }
