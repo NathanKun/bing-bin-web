@@ -45,10 +45,12 @@ class App extends MY_Controller {
 
         $this->invalidOldTokens($match->id);
 
+	$data = $this->infoFor($$match->id);
+	$data['token'] = $this->updateToken($match->id);
+
         echo json_encode(array(
             "valid" => TRUE,
-            "data" => $this->infoFor($$match->id),
-            "token" => $this->updateToken($match->id)
+            "data" => $data
         ));
     }
 
@@ -235,10 +237,12 @@ class App extends MY_Controller {
             exit;
         }
 
+	$data = $this->infoFor($token_info->id_user);
+	$data['gain_eco_point'] =  $type_info->eco_point;
+
         echo json_encode(array(
             'valid' => TRUE,
-            'data' => $this->infoFor($token_info->id_user),
-            'gain_eco_point' => $type_info->eco_point
+            'data' => $data
         ));
     }
 
@@ -434,8 +438,7 @@ class App extends MY_Controller {
 
         echo json_encode(array(
             'valid' => TRUE,
-            'data' => $this->infoFor($token_info->id_user),
-            'history' => $this->_historiques->limited_history($token_info->id_user, $limit)
+            'data' => array('history' => $this->_historiques->limited_history($token_info->id_user, $limit))
         ));
     }
 
@@ -464,8 +467,7 @@ class App extends MY_Controller {
 
         echo json_encode(array(
             'valid' => TRUE,
-            'data' => $this->infoFor($token_info->id_user),
-            'summary' => $this->_historiques->summary($token_info->id_user)
+            'data' => array('summary' => $this->_historiques->summary($token_info->id_user))
         ));
     }
 
