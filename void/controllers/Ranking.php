@@ -253,7 +253,7 @@ class Ranking extends MY_Controller {
         $date = new DateTime();
         $duration = $timestamp = strtotime($date->format('d-m-Y'));
         
-        $sun_point_histo = $this->_sunhistoriques->inDuration($$id_user, $duration);
+        $sun_point_histo = $this->_sunhistoriques->inDuration($id_user, $duration);
         foreach($sun_point_histo as $k=>$v)
         {
             if($v->id_receiver_user == $id_target){
