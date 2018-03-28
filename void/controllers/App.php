@@ -31,7 +31,7 @@ class App extends MY_Controller {
         // $match : contain all information about the user
         $match = $this->_users->mailMatchPwd(
             $this->input->post('email'),
-            sha1($this->input->post('password'))
+            $this->input->post('password')
         );
         unset($match->password);
 
@@ -45,8 +45,8 @@ class App extends MY_Controller {
 
         $this->invalidOldTokens($match->id);
 
-	$data = $this->infoFor($$match->id);
-	$data['token'] = $this->updateToken($match->id);
+    	$data = $this->infoFor($$match->id);
+    	$data['token'] = $this->updateToken($match->id);
 
         echo json_encode(array(
             "valid" => TRUE,
@@ -105,7 +105,7 @@ class App extends MY_Controller {
             "firstname" => $this->input->post("firstname"),
             "mail" => $this->input->post("email"),
             "pseudo" => $this->input->post('pseudo'),
-            'password' => sha1($this->input->post('password'))
+            'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT);
         ));
 
         echo json_encode(array(
