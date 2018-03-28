@@ -44,7 +44,7 @@ class App extends MY_Controller {
 
         $this->invalidOldTokens($match->id);
 
-    	$data = $this->infoFor($$match->id);
+    	$data = $this->infoFor($match->id);
     	$data['token'] = $this->updateToken($match->id);
 
         echo json_encode(array(

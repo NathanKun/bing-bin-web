@@ -54,9 +54,9 @@ class UsersModel extends CI_Model
             ->where('email', $mail)
             ->get()
             ->result();
-            
-        if(isset($u[0])){
-            return password_verify($password, $u[0]->password);
+
+        if(isset($u[0]) && password_verify($password, $u[0]->password)) {
+            return $u[0];
         }else{
             return FALSE;
         }
