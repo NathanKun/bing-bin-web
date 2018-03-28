@@ -33,7 +33,6 @@ class App extends MY_Controller {
             $this->input->post('email'),
             $this->input->post('password')
         );
-        unset($match->password);
 
         if(!$match){
             echo json_encode(array(
@@ -105,7 +104,7 @@ class App extends MY_Controller {
             "firstname" => $this->input->post("firstname"),
             "mail" => $this->input->post("email"),
             "pseudo" => $this->input->post('pseudo'),
-            'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT);
+            'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT)
         ));
 
         echo json_encode(array(

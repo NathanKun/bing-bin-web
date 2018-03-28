@@ -54,9 +54,12 @@ class UsersModel extends CI_Model
             ->where('email', $mail)
             ->get()
             ->result();
-        
-        error_log($u);
-        return password_verify($password, $u->password);
+            
+        if(isset($u[0])){
+            return password_verify($password, $u[0]->password);
+        }else{
+            return FALSE;
+        }
     }
 
     public function existingPseudo($pseudo){
